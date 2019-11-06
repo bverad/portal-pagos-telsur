@@ -1,0 +1,23 @@
+spring:
+    profiles:
+        active:
+            - prod
+        
+server:
+  servlet:
+    context-path: /pagos-telsur
+  
+app:
+  dbcore:
+    ddl-auto: update
+    jndi-name: java:jboss/datasources/DS_DVT436_CORE_01
+    driver-class-name: com.mysql.jdbc.Driver
+    dialect: org.hibernate.dialect.MySQL5Dialect
+  
+  dbprov:
+    ddl-auto: update
+    jndi-name: java:jboss/datasources/DS_DVT436_PROV_01
+    driver-class-name: com.mysql.jdbc.Driver
+    dialect: org.hibernate.dialect.MySQL5Dialect
+   
+  email: production@email.com

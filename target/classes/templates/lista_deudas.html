@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<input type="hidden" name="_token"
+	value="tSC1TBE5PdVmx4IXQNsS426rCbYA4cyEMgtA5kkr">
+	
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<script type="text/javascript">
+		var BASE_URL = 'http://pagos.telsur.cl/';
+	</script>
+	<title>Telef&oacute;nica del Sur | Pago de Cuentas</title>
+	
+	<meta
+		content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+		name="viewport">
+	<link rel="stylesheet" th:href="@{~/pagos-telsur/css/allware.documents.css}">
+	<link rel="stylesheet" th:href="@{~/pagos-telsur/css/bootstrap.css}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="icon" type="image/png" href="https://www.telsur.cl/media/telefonicadelsur/favicon-telefonicadelsur.png">
+
+</head>
+<body>
+	<div id="cboxOverlay" style="display: none;"></div>
+	<div id="page-cover_body">
+		<iframe title="" width="100%"
+			src="http://www.telsur.cl/embeddable-header" frameborder="0"
+			scrolling="no" th:attr="src=${header}"></iframe>
+		<div class="container hidden-xs">
+			<div class="row ">
+				<div class="col-xs-12 col-sm-8">
+					<div class="">
+						<div class="">
+							<h1 class="titilliumweb-bold">BIENVENIDOS AL PAGO DE CUENTAS</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row ">
+				<div class="col-xs-12 col-sm-8">
+					<div class="">
+						<div class="">
+							<h4 class="titilliumweb">SELECCIONE DOCUMENTOS PARA PAGO</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container visible-xs">
+			<div class="row ">
+				<div class="col-xs-12 col-sm-8">
+					<h3 class="titilliumweb-bold">BIENVENIDOS AL PAGO DE CUENTAS</h3>
+				</div>
+			</div>
+			<div class="row ">
+				<div class="col-xs-12 col-sm-8">
+					<h5 class="titilliumweb">SELECCIONE DOCUMENTOS PARA PAGO</h5>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-offset-2 col-md-8">
+					<div id="telsur-app">
+						<upselling-banner rut='813805006' origin='PC'
+							th:attr="rut=${rutFormateado}"
+							upsales-url='http://app2.telsur.cl'> </upselling-banner>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 information hidden-xs">
+					<div class="user-information col-sm-2">
+						<div class="row user-title text-center">R.U.T</div>
+						<div class="row user-title-body text-center"><span id="rut" th:text="${rutFormateado}"></span></div>
+					</div>
+					<div class="user-steps col-sm-10" style="margin-top: 20px;">
+						<div class="row  pull-right">
+							<div class="col-sm-12">
+								<img th:src="@{~/pagos-telsur/img/step_01.png}" alt=""
+									class="img-responsive">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xs-12 information visible-xs"
+					id="container-scrolling">
+					<div class="user-information col-xs-6">
+						<div class="row user-title text-center">R.U.T</div>
+						<div class="row user-title-body text-center"><span th:text="${rutFormateado}"></div>
+					</div>
+					<div class="visible-xs col-xs-2"></div>
+					<div class="col-xs-4 visible-xs" style="margin-top: 10px;">
+						
+						<!-- evalua que filtro de empresa se esta aplicando -->						
+						<button type="button" class="btn btn-success btn-company"
+							value="TELSUR">TELSUR</button>
+						<button type="button" class="btn btn-default btn-company"
+							value="TELCOY">TELCOY</button>
+							
+						<input id="userId" value="813805006" th:attr="value=${rut}" class="hidden">
+						<input id="cantidadRegistrosTelsur" value="" th:attr="value=${response.cantidadRegistrosTelsur}" class="hidden">
+						<input id="cantidadRegistrosTelcoy" value="" th:attr="value=${response.cantidadRegistrosTelcoy}" class="hidden"> 
+						<input id="selectedCompany" value="TELSUR" class="hidden" 
+							th:attr="value=${selectedCompany}">
+					</div>
+				</div>
+
+				<div class="user-steps col-sm-12 visible-xs"
+					style="margin-top: 100px;">
+					<div class="row  pull-right">
+						<div class="col-sm-12">
+							<img th:src="@{~/pagos-telsur/img/step_01.png}" alt=""
+								class="img-responsive">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- control de errores -->
+			<div id="alert-cdeuda">
+				<span th:if="${error != null}">
+					<div class='alert alert-danger' role='alert'>
+						<span th:text="${error}"></span>
+					</div>
+				</span>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<div class="col-sm-4 col-xs-12 hidden-xs"
+						style="padding: 0 5px 0 5px;">
+						<div class="company-body text-center">
+							<!-- evalua que filtro de empresa se esta aplicando -->						
+								<button type="button" class="btn btn-success btn-company"
+									value="TELSUR">TELSUR</button>
+								<button type="button" class="btn btn-default btn-company"
+									value="TELCOY">TELCOY</button>
+							
+							<input id="userId" value="813805006" th:attr="value=${rut}" class="hidden"> 
+							<input id="selectedCompany" value="" class="hidden">
+						</div>
+					</div>
+					<div class="col-xs-12 visible-xs" style="padding: 0 5px 0 5px;">
+						<div class="company-step text-center col-xs-12">
+							<button type="button" class="btn btn-block btn-mp btn-success">Siguiente</button>
+								
+							<!--  <a th:href="@{'/pagos/comprobantes?rut='+${rut}+'&empresa='+${empresa}}" class="btn btn-block btn-history" role="button" aria-disabled="true">Ver Comprobantes</a>-->
+							<a onclick="cargaComprobantes()" role="button" aria-disabled="true">
+							<button type="button" style="margin-bottom:4px;" class="btn btn-block btn-history">Ver Comprobantes</button></a>	
+						</div>
+					</div>
+					<div class="text-center col-xs-12 visible-xs flash-message-xs">
+					</div>
+					<div class="col-sm-6 col-xs-12" style="padding: 0 5px 0 5px;">
+						<div class="company-total  text-center">
+							<div class="col-sm-6 col-xs-12">
+								$<span id="total-amount">0</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-2 col-xs-12 hidden-xs"
+						style="padding: 0 5px 0 5px;">
+						<div class="company-step  text-center">
+							<button type="button" class="btn btn-block btn-mp btn-success">Siguiente</button>
+								<!--  <a th:href="@{'/pagos/comprobantes?rut='+${rut}+'&empresa='+${empresa}}" class="btn btn-block btn-history" role="button" aria-disabled="true">Ver Comprobantes</a>-->
+							<a onclick="cargaComprobantes()" role="button" aria-disabled="true">
+							<button type="button" style="margin-bottom:4px;" class="btn btn-block btn-history">Ver Comprobantes</button></a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div id ="deudas-container" class="row documents" th:fragment="deudasList">
+				<th:block th:if="${response}">
+				<div class="col-sm-12 col-xs-12">
+					<div class="text-center hidden-xs"></div>
+					
+					<div class="panel-group" id="accordion" role="tablist"
+						aria-multiselectable="true"
+						th:each="sucursal: ${response.sucursalList}">
+						<div class="panel panel-default" data-empresa="" th:attr="data-empresa=${sucursal.empresa}">
+						
+						<div class="documents-heading panel-heading" role="tab"
+								id="heading-3516" 
+								th:attr="id=${'heading-' + response.transaccionId}">
+								<div class="row panel-title">
+																		
+									<a class="visible-xs" role="button" data-toggle="collapse"
+										data-parent="#accordion" href="#collapse-3516" 
+										aria-expanded="true" aria-controls="collapse-3516"
+										th:attr="href=${'#collapse-' + sucursal.correlativo},aria-controls=${'collapse-' + sucursal.correlativo}">
+										<div class="col-xs-6 text-center">
+											<strong><span th:text="${sucursal.tipo}"></strong>
+										</div>
+										<div class="col-xs-4 text-center bold"><span th:text="${'$ ' +  sucursal.total}"/> </div>
+									</a>
+									<div class="col-xs-2 visible-xs">
+										<input class="check-all" type="checkbox" id="check-3516-xs"
+											th:attr="id=${'check-' + sucursal.correlativo} + '-xs'"
+											onchange="selectAll(this)"/>
+									</div>
+									
+									<a class="hidden-xs" role="button" data-toggle="collapse"
+										data-parent="#accordion" href="#collapse-3516"
+										aria-expanded="true" aria-controls="collapse-3516"
+										th:attr="href=${'#collapse-' + sucursal.correlativo},aria-controls=${'collapse-' + sucursal.correlativo}">
+										<div class="col-sm-2 text-center"></div>
+										<div class="col-sm-6 text-left"><span th:text="${sucursal.tipo}"></div>
+										<div class="col-sm-2 text-left"><span th:text="${'$ ' +  sucursal.total}"/></div>
+									</a>
+									<div class="col-sm-1 text-right hidden-xs">
+										<input class="check-all" type="checkbox" id="check-3516"
+											th:attr="id=${'check-' + sucursal.correlativo} + '-xs'"
+											onchange="selectAll(this)"/>
+									</div>
+									<div class="col-sm-1 hidden-xs text-center">
+										<a role="button" data-toggle="collapse"
+											data-parent="#accordion" href="#collapse-3516"
+											aria-expanded="true" aria-controls="collapse-3516"
+											th:attr="href=${'#collapse-' + sucursal.correlativo}, aria-controls=${'collapse-' + sucursal.correlativo}"> + </a>
+									</div>
+								</div>
+							</div>
+							
+							
+							<!-- iteracion de detalle de pago -->
+							<div id="collapse-3516" class="panel-collapse collapse"
+								role="tabpanel" aria-labelledby="heading-3516"
+								th:attr="id=${'collapse-' + sucursal.correlativo}, 
+											aria-labelledby=${'heading' + sucursal.correlativo}">
+								<div class="panel-body">
+									<div class="hidden alert alert-danger text-center"></div>
+									<table id="table-3516-xs"
+										class="table table-responsive visible-xs"
+											th:attr="id=${'table-' + sucursal.correlativo + '-xs'}">
+										<thead>
+											<tr>
+												<th>N° Doc</th>
+												<th>Fecha Venc</th>
+												<th class="number-money">Monto</th>
+												<th>Seleccionar</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="deuda: ${sucursal.documentList}">
+												<td><span th:text="${deuda.numeroDocumento}"/></td>
+												<td><span th:text="${#dates.format(deuda.fechaVencimiento, 'dd-MM-yyyy')}"/></td>
+												
+												<td class="number-money"><span th:text="${'$ ' + deuda.monto}"/></td>
+												<td><input id="01-02-2018|11377711"
+													class="check-amount-xs" value="934685"
+													onclick="validateSelectionDocXs(this)" type="checkbox"
+													data-type data-fecha="01-02-2018" data-numdoc="11377711"
+													data-fvenc="26-02-2018" data-docid="3516"
+													data-total="934685" data-tipo_doc="2" data-saldo="934685"
+													data-desc-doc="Factura Comp." data-document_id="3516"
+													data-succodigo="12"
+													th:attr="id=${ #dates.format(deuda.fechaDocumento, 'dd-MM-yyyy') + '|' + deuda.numeroDocumento},
+													value=${#strings.replace(deuda.monto,'.','')}, 
+													data-fecha=${#dates.format(deuda.fechaDocumento, 'dd-MM-yyyy')},	
+													data-numdoc=${deuda.numeroDocumento}, 
+													data-fvenc=${#dates.format(deuda.fechaVencimiento, 'dd-MM-yyyy')},	
+					 								data-docid=${response.transaccionId}, 
+													data-total=${deuda.monto}, 
+													data-tipo_doc=${deuda.tipoDocumento},
+													data-codigo-tipo-doc=${deuda.codigoTipoDocumento}, 
+													data-saldo=${deuda.monto}, 
+													data-desc-doc=${deuda.tipoDocumento},	
+													data-document_id=${response.transaccionId},
+													data-succodigo=${sucursal.codigo},
+													data-succorrelativo=${sucursal.correlativo},
+													data-suctipo=${sucursal.tipo}"/>
+							
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<table id="table-3516" 
+										class="table table-responsive hidden-xs"
+										th:attr="id=${'table-' + sucursal.correlativo}">
+										<thead>
+											<tr>
+												<th><h4>Tipo Doc</h4></th>
+												<th><h4>N° Doc</h4></th>
+												<th><h4>Fecha Doc</h4></th>
+												<th><h4>Fecha Venc</h4></th>
+												<th class="number-money"><h4>Monto $</h4></th>
+												<th><h4>Seleccionar</h4></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="deuda: ${sucursal.documentList}">
+												<td><span th:text="${deuda.tipoDocumento}"/></td>
+												<td><span th:text="${deuda.numeroDocumento}"/></td>
+												<td><span th:text="${#dates.format(deuda.fechaDocumento,'dd-MM-yyyy')}"/></td>
+												<td><span th:text="${#dates.format(deuda.fechaVencimiento,'dd-MM-yyyy')}"/></td>
+												<td class="number-money"><span th:text="${'$ ' + deuda.monto}"/></td>
+												<td><input id="01-02-2018|11377711"
+													class="check-amount" value="934685"
+													onclick="validateSelectionDoc(this)" type="checkbox"
+													data-type data-fecha="01-02-2018" data-numdoc="11377711"
+													data-fvenc="26-02-2018" data-docid="3516"
+													data-total="934685" data-tipo_doc="2" data-saldo="934685"
+													data-desc-doc="Factura Comp." data-document_id="3516"
+													data-succodigo="12"
+													th:attr="id=${ #dates.format(deuda.fechaDocumento, 'dd-MM-yyyy') + '|' + deuda.numeroDocumento},
+															value=${#strings.replace(deuda.monto,'.','')},
+															data-fecha=${#dates.format(deuda.fechaDocumento, 'dd-MM-yyyy')},	
+															data-numdoc=${deuda.numeroDocumento}, 
+															data-fvenc=${#dates.format(deuda.fechaVencimiento, 'dd-MM-yyyy')},	
+															data-docid=${response.transaccionId}, 
+															data-total=${#strings.replace(deuda.monto,'.','')}, 
+															data-tipo_doc=${deuda.tipoDocumento},
+															data-codigo-tipo-doc=${deuda.codigoTipoDocumento}, 
+															data-saldo=${#strings.replace(deuda.monto,'.','')}, 
+															data-desc-doc=${deuda.tipoDocumento},	
+															data-document_id=${response.transaccionId},
+															data-succodigo=${sucursal.codigo},
+															data-succorrelativo=${sucursal.correlativo},
+															data-suctipo=${sucursal.tipo}"/>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<th:block/>
+			</div>
+			
+		</div>
+	</div>
+	</div>
+	
+	<!-- envia respuesta a formulario de medios de pago -->
+	<form id="form_calcular_mp" action="/pagos-telsur/pagos/seleccion_mp" method=post>
+	</form>
+</body>
+<div id="page-cover">
+	<iframe title="" src="http://www.telsur.cl/embeddable-footer"
+		frameborder="0" scrolling="0" width="100%" height="100%"
+		class="iframeFooter" th:attr="src=${footer}"></iframe>
+	<style>
+.datos-con-margin-top {
+	margin-top: 0px;
+}
+
+@media ( min-width : 1200px) {
+	.iframeFooter {
+		height: 830px;
+	}
+	.confondo {
+		height: 460px;
+	}
+	.datos-con-margin-top {
+		margin-top: 59px;
+	}
+}
+
+@media ( max-width : 1199px) and (min-width: 1024px) {
+	.iframeFooter {
+		height: 910px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 1023px) and (min-width: 992px) {
+	.iframeFooter {
+		height: 800px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 991px) and (min-width: 768px) {
+	.iframeFooter {
+		height: 630px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 767px) and (min-width: 736px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 735px) and (min-width: 667px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 666px) and (min-width: 600px) {
+	.iframeFooter {
+		height: 670px;
+	}
+}
+
+@media ( max-width : 599px) and (min-width: 568px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 567px) and (min-width: 414px) {
+	.iframeFooter {
+		height: 1374px;
+	}
+}
+
+@media ( max-width : 413px) and (min-width: 384px) {
+	.iframeFooter {
+		height: 480px;
+	}
+}
+
+@media ( max-width : 383px) and (min-width: 375px) {
+	.iframeFooter {
+		height: 1374px;
+	}
+}
+
+@media ( max-width : 374px) and (min-width: 320px) {
+	.iframeFooter {
+		height: 1430px;
+	}
+}
+
+@media ( max-width : 319px) and (min-width: 240px) {
+	.iframeFooter {
+		height: 1500px;
+	}
+}
+
+@media ( max-width : 240px) {
+	.iframeFooter {
+		height: 1500px;
+	}
+}
+</style>
+</div>
+<script th:src="@{~/pagos-telsur/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{~/pagos-telsur/js/moment.js}"></script>
+<script th:src="@{~/pagos-telsur/js/bootstrap.js}"></script>
+<!-- thymeleaf absolute path -->
+<script th:src="@{~/pagos-telsur/js/allware.js}"></script>
+
+
+</html>

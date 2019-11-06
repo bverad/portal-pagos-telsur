@@ -1,0 +1,12 @@
+cl\devetel\pagostelsur\MessageBoundleTest.class
+cl\devetel\pagostelsur\ProfilingTest.class
+cl\devetel\pagostelsur\ConfigurationTest.class
+cl\devetel\pagostelsur\TrxBodyRepositoryTest.class
+cl\devetel\pagostelsur\ConfigurationTest$PagosServiceImplTestContextConfiguration.class
+cl\devetel\pagostelsur\TrxBodyRepositoryTest$PagosServiceImplTestContextConfiguration.class
+cl\devetel\pagostelsur\TrxHeadRepositoryTest$TrxHeadTestContextConfiguration.class
+cl\devetel\pagostelsur\WSConsultaDeudaTest.class
+cl\devetel\pagostelsur\PagosServiceTest$PagosServiceImplTestContextConfiguration.class
+cl\devetel\pagostelsur\TrxHeadRepositoryTest.class
+cl\devetel\pagostelsur\PagosControllerTest.class
+cl\devetel\pagostelsur\PagosServiceTest.class

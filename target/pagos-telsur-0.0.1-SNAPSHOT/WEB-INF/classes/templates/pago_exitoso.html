@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<input type="hidden" name="_token"
+	value="tSC1TBE5PdVmx4IXQNsS426rCbYA4cyEMgtA5kkr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="text/javascript">
+			var BASE_URL = 'http://pagos.telsur.cl/';
+		</script>
+<title>Telef&oacute;nica del Sur | Pago de Cuentas</title>
+
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
+	<link rel="stylesheet" th:href="@{~/pagos-telsur/css/allware.documents.css}">
+	<link rel="stylesheet" th:href="@{~/pagos-telsur/css/bootstrap.css}">
+	<link rel="stylesheet" th:href="@{~/pagos-telsur/css/portal-cyd-pagos.css}">
+	<link rel="icon" type="image/png" href="https://www.telsur.cl/media/telefonicadelsur/favicon-telefonicadelsur.png">
+	
+</head>
+<body>
+	<div id="cboxOverlay" style="display: none;"></div>
+	<div id="page-cover_body">
+		<iframe title="" width="100%" id="header"
+			src="http://www.telsur.cl/embeddable-header" frameborder="0"
+			scrolling="no" class="iframeHeader" th:attr="src=${header}"></iframe>
+
+		<div class="container" id="container">
+			<div class="row">
+				<!--  -->
+				<div style="width:70%;margin: 0 auto;">
+				
+					<div class="row">
+						<div class="receipt-header receipt-header-mid">				
+							<div class="col-xs-4 col-sm-4 col-md-4">
+								<div class="receipt-left">
+									<h1>Comprobante</h1>
+								</div>
+							</div>
+						
+							<div class="col-xs-8 col-sm-8 col-md-8 text-right">
+								<div class="receipt-right">
+									<p>
+										<b>RUT : <span th:text="${rut}"></span></b> 
+									</p>
+									<p>
+										<b>Email :</b> <span th:text="${mail}"></span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>Descripcion</th>
+									<th>Valor</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="col-md-9">Comercio</td>
+									<td class="col-md-3"><i class="fa fa-inr"></i><span th:text="${comercio ?: '-'}"></span></td>
+								</tr>
+								<tr>
+									<td class="col-md-9">Número de orden</td>
+									<td class="col-md-3"><i class="fa fa-inr"></i><span th:text="${numero_orden ?: '-'}"></span></td>
+								</tr>
+								<tr>
+									<td class="col-md-9">Identificador de transacción</td>
+									<td class="col-md-3"><i class="fa fa-inr"></i><span th:text="${id_transaccion ?: '-'}"></span></td>
+								</tr>
+								<tr>
+									<td class="col-md-9">Código de autorización</td>
+									<td class="col-md-3"><i class="fa fa-inr"></i><span th:text="${codigo_autorizacion ?: '-'}"></span></td>
+								</tr>
+								<tr>
+									<td class="col-md-9">Fecha</td>
+									<td class="col-md-3"><i class="fa fa-inr"></i><span th:text="${fecha_pago ?: '-'}"></span>&nbsp;<span th:text="${hora_pago ?: '-'}"></span></td>
+								</tr>
+								<tr>
+									<td class="col-md-9">Medio de pago</td>
+									<td class="col-md-3"><i class="fa fa-inr"></i><span th:text="${medio_pago ?: '-'}"></span></td>
+								</tr>
+								<tr>
+									<td class="col-md-9">Tipo de pago</td>
+									<td class="col-md-3"><i class="fa fa-inr"></i><span th:text="${tipo_pago ?: '-'}"></span></td>
+								</tr>
+								<tr>
+									<td class="col-md-9">Número de tarjeta</td>
+									<td class="col-md-3"><i class="fa fa-inr"></i><span th:text="${numero_tarjeta ?: 'XXXX'}"></span></td>
+								</tr>
+								<tr>
+									<td class="col-md-9">Cantidad de cuotas</td>
+									<td class="col-md-3"><i class="fa fa-inr"></i><span th:text="${numero_cuotas ?: '-'}"></span></td>
+								</tr>
+								<tr>
+									<td class="col-md-9">Tipo de cuotas</td>
+									<td class="col-md-3"><i class="fa fa-inr"></i><span th:text="${tipo_cuotas ?: '-'}"></span></td>
+								</tr>
+								<tr>
+
+									<td class="text-right"><h2>
+											<strong>Total: </strong>
+										</h2></td>
+									<td class="text-left text-danger"><h2>
+											<strong><i class="fa fa-inr"></i><span th:text="${monto}"></span></strong>
+										</h2></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+					
+					<div class="row">
+						<div class="receipt-header receipt-header-mid">
+							<div class="col-xs-4 col-sm-4 col-md-4">
+								<div class="receipt-left">
+									<h1>Documentos pagados</h1>
+								</div>
+							</div>
+						</div>
+						
+						<div>
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th>Tipo documento</th>
+										<th>Numero documento</th>
+										<th>Emisión</th>
+										<th>Vencimiento</th>
+										<th>Monto</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="trxBody : ${trxBodyList}">
+										<td>&nbsp;</td>
+										<td><span th:text="${trxBody.id.doc}"></span></td>
+										<td><span th:text="${trxBody.feemi}"></span></td>
+										<td><span th:text="${trxBody.feven}"></span></td>
+										<!-- formatea monto sin decimales -->
+										<td><span th:text="${#numbers.formatDecimal(trxBody.mnt, 0, 'POINT', 0, 'COMMA')}"></span></td>
+									</tr>
+	
+								</tbody>
+							</table>
+						</div>
+					
+					</div>
+					
+					<div class="row">
+						<div class="receipt-header receipt-header-mid receipt-footer">
+							<!--  Implementar el boton volver-->
+							<form action="" method="GET" th:attr="action=${btnVolver}">
+								<!-- <input type="hidden" name="regresar" id="regresar" value="1" /> -->
+								<div class="form-group">
+									<label for="in-mail">Enviamos una copia de este comprobante a tu correo:</label> 
+									<input readonly="readonly" id="in-mail" aria-describedby="mail-help" value=""
+									th:attr="value=${mail}">
+									<small id="mail-help">Nunca compartiremos tu informaci&oacute;n con un tercero.</small><br><br>
+									<button type="submit" class="btn btn-telsur titilliumweb">Regresar</button>
+									<button type="button" class="btn btn-telsur titilliumweb" onclick="print()">Imprimir</button>
+								</div>
+							</form>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="receipt-header receipt-header-mid receipt-footer">
+							<div class="col-xs-8 col-sm-8 col-md-8 text-left">
+								<div class="receipt-right">
+									<p>
+										<b>Fecha :</b> <span th:text="${#dates.format(#dates.createNow(), 'dd mm yyyy')}"></span>
+									</p>
+									<h5 style="color: rgb(140, 140, 140);">Gracias por tu compra!</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<div id="page-cover">
+	<iframe title="" src="http://www.telsur.cl/embeddable-footer" id="footer"
+		frameborder="0" scrolling="0" width="100%" height="100%"
+		class="iframeFooter" th:attr="src=${footer}"></iframe>
+	<style>
+.datos-con-margin-top {
+	margin-top: 0px;
+}
+
+@media ( min-width : 1200px) {
+	.iframeFooter {
+		height: 830px;
+	}
+	.confondo {
+		height: 460px;
+	}
+	.datos-con-margin-top {
+		margin-top: 59px;
+	}
+}
+
+@media ( max-width : 1199px) and (min-width: 1024px) {
+	.iframeFooter {
+		height: 910px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 1023px) and (min-width: 992px) {
+	.iframeFooter {
+		height: 800px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 991px) and (min-width: 768px) {
+	.iframeFooter {
+		height: 630px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 767px) and (min-width: 736px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 735px) and (min-width: 667px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 666px) and (min-width: 600px) {
+	.iframeFooter {
+		height: 670px;
+	}
+}
+
+@media ( max-width : 599px) and (min-width: 568px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 567px) and (min-width: 414px) {
+	.iframeFooter {
+		height: 1374px;
+	}
+}
+
+@media ( max-width : 413px) and (min-width: 384px) {
+	.iframeFooter {
+		height: 480px;
+	}
+}
+
+@media ( max-width : 383px) and (min-width: 375px) {
+	.iframeFooter {
+		height: 1374px;
+	}
+}
+
+@media ( max-width : 374px) and (min-width: 320px) {
+	.iframeFooter {
+		height: 1430px;
+	}
+}
+
+@media ( max-width : 319px) and (min-width: 240px) {
+	.iframeFooter {
+		height: 1500px;
+	}
+}
+
+@media ( max-width : 240px) {
+	.iframeFooter {
+		height: 1500px;
+	}
+}
+
+@media print {
+	.iframeHeader { display: none;}
+	#container { display: block; }
+	#page-cover { display: none; }/* ... except the required div */
+}
+</style>
+</div>
+<script th:src="@{~/pagos-telsur/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{~/pagos-telsur/js/moment.js}"></script>
+<script th:src="@{~/pagos-telsur/js/bootstrap.js}"></script>
+<!-- thymeleaf absolute path -->
+<script th:src="@{~/pagos-telsur/js/allware.js}"></script>
+<script>
+	$('div.alert').not('.alert-important').delay(5000).fadeOut(500);
+</script>
+
+</html>

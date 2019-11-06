@@ -1,0 +1,121 @@
+/*CSS allware custom*/
+
+.page-404 {
+  margin-top: 50px;
+  padding: 100px 0;
+  border-bottom: 12px solid #0c7f0b;
+  background-color: #E6ECEE;
+}
+
+input[type="checkbox"][id^="cb"] {
+  display: none;
+}
+
+/*
+label {
+  border: 1px solid #fff;
+  padding: 10px;
+  display: block;
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+} */
+
+label:before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  border: 1px solid grey;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+
+label img {
+  height: 500px;
+  width: 500px;
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
+}
+
+:checked + label {
+  border-color: #ddd;
+}
+
+:checked + label:before {
+  content: "✓";
+  background-color: #0c7f0b;
+  transform: scale(1.5);
+}
+
+:checked + label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
+}
+
+.btn-pay {
+  background-color: #ed1c24 !important;
+  color: white !important;
+  vertical-align: center;
+}
+
+.title-consulta {
+  background: rgba(230, 231, 233, 0.7);
+  border-color: #656971 solid;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.title-consulta h4 {
+  color: #596168;
+}
+
+.body-consulta-corners {
+  background: rgba(230, 231, 233, 0.7);
+  border-color: rgba(101, 105, 113, 0.1);
+  border-style: solid;
+  border-width: 1px;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.body-consulta {
+  background: rgba(230, 231, 233, 0.7);
+  border-color: rgba(101, 105, 113, 0.1);
+  border-style: solid;
+  border-width: 1px;
+  padding: 10px;
+}
+
+hr.consulta{
+  height: 5px !important;
+  background: #008000;
+  border: 1px solid #015101;
+}
+
+.button-consulta {
+}
+
+.divider-vertical {
+  height: 40px;
+  margin: 0 9px;
+  border-left: 1px solid #f2f2f2;
+  border-right: 1px solid #ffffff;
+}
+
+.button-consulta-xs {
+  margin-bottom: 10px;
+}
+
+.alert-danger {
+  font-size: 30px !important;
+}

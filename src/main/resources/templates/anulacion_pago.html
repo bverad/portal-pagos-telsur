@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<input type="hidden" name="_token"
+	value="cazLf6c2SVfb8j5BpnPAW7K5ZL2nIQJEIzDmfH2v">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="text/javascript">
+			var BASE_URL = 'http://pagos.telsur.cl/';
+		</script>
+<title>Telef&oacute;nica del Sur | Pago de Cuentas</title>
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
+<link rel="stylesheet" th:href="@{~/pagos-telsur/css/allware.css}">
+<link rel="stylesheet" th:href="@{~/pagos-telsur/css/allware.documents.css}">
+<link rel="stylesheet" th:href="@{~/pagos-telsur/css/bootstrap.css}">
+<link rel="icon" type="image/png" href="https://www.telsur.cl/media/telefonicadelsur/favicon-telefonicadelsur.png">
+
+
+</head>
+<body>
+	<div id="cboxOverlay" style="display: none;"></div>
+	<div id="page-cover_body">
+		<iframe title="" width="100%"
+			src="http://www.telsur.cl/embeddable-header" frameborder="0"
+			scrolling="no" th:attr="src=${header}"></iframe>
+		<div class="container">
+			<div class="row ">
+				<div class="col-xs-12 col-sm-8">
+					<div class="">
+						<div class="">
+							<h1 class="titilliumweb-bold">BIENVENIDOS AL PAGO DE CUENTAS</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row ">
+				<div class="col-xs-12 col-sm-8">
+					<div class="">
+						<div class="">
+							<h4 class="titilliumweb">PAGO NO REALIZADO</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 information">
+					<div class="user-information col-sm-2">
+						<div class="row user-title text-center">R.U.T</div>
+						<div class="row user-title-body text-center">
+							<span th:text="${rut}"></span>
+						</div>
+					</div>
+					<div class="user-steps col-sm-10 col-xs-12"
+						style="margin-top: 20px;">
+						<div class="row  pull-right">
+							<div class="col-sm-12 col-xs-12">
+								<img src="http://pagos.telsur.cl/img/step_02.png" alt=""
+									class="img-responsive">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="success-total col-sm-12 text-center bg-danger">
+						<p>
+							$<span id="total-amount" th:text="${monto}"></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 information">
+					<div class="payment-information col-sm-12">
+						<div class="row payment-title-fail text-center">PAGO NO
+							REALIZADO</div>
+						<div class="row success-title-body">
+							<div class="col-sm-12">
+								<p>Estimado Cliente</p>
+								<p>
+									<span th:text="${mensaje}"></span>
+								</p>
+								<p>
+									<b>TRANSACCI&Oacute;N ANULADA</b>
+								</p>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="receipt-header receipt-header-mid receipt-footer">
+					<form action="" method="GET" th:attr="action=${btnVolver}">
+						<!-- <input type="hidden" name="regresar" id="regresar" value="1" /> -->
+						<div class="form-group" style="text-align: center;">
+							<br><br>
+							<button type="submit" class="btn btn-telsur titilliumweb">Regresar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</body>
+<div id="page-cover">
+	<iframe title="" src="http://www.telsur.cl/embeddable-footer"
+		frameborder="0" scrolling="0" width="100%" height="100%"
+		class="iframeFooter" th:attr="src=${footer}"></iframe>
+	<style>
+.datos-con-margin-top {
+	margin-top: 0px;
+}
+
+@media ( min-width : 1200px) {
+	.iframeFooter {
+		height: 830px;
+	}
+	.confondo {
+		height: 460px;
+	}
+	.datos-con-margin-top {
+		margin-top: 59px;
+	}
+}
+
+@media ( max-width : 1199px) and (min-width: 1024px) {
+	.iframeFooter {
+		height: 910px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 1023px) and (min-width: 992px) {
+	.iframeFooter {
+		height: 800px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 991px) and (min-width: 768px) {
+	.iframeFooter {
+		height: 1370px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 767px) and (min-width: 736px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 735px) and (min-width: 667px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 666px) and (min-width: 600px) {
+	.iframeFooter {
+		height: 670px;
+	}
+}
+
+@media ( max-width : 599px) and (min-width: 568px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 567px) and (min-width: 414px) {
+	.iframeFooter {
+		height: 1374px;
+	}
+}
+
+@media ( max-width : 413px) and (min-width: 384px) {
+	.iframeFooter {
+		height: 480px;
+	}
+}
+
+@media ( max-width : 383px) and (min-width: 375px) {
+	.iframeFooter {
+		height: 1374px;
+	}
+}
+
+@media ( max-width : 374px) and (min-width: 320px) {
+	.iframeFooter {
+		height: 1430px;
+	}
+}
+
+@media ( max-width : 319px) and (min-width: 240px) {
+	.iframeFooter {
+		height: 1500px;
+	}
+}
+
+@media ( max-width : 240px) {
+	.iframeFooter {
+		height: 1500px;
+	}
+}
+</style>
+</div>
+<script th:src="@{~/pagos-telsur/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{~/pagos-telsur/js/allware.js}"></script>
+<script th:src="@{~/pagos-telsur/js/bootstrap.js}"></script>
+
+</html>

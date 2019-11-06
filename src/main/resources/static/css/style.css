@@ -1,0 +1,516 @@
+/*CSS modificados por Allware*/
+
+
+#form-pago-cuentas td {
+    
+    padding: 0px !important;
+	color:#666;
+    
+}
+
+input {
+    text-transform: uppercase;
+}
+.btn-telsur{
+    background-color: #0033A0;
+    color: #fff;
+    border-radius: 0;
+    padding: 8px 20px;
+}
+.btn-telsur:hover,
+.btn-telsur:focus,
+.btn-telsur:visited,
+.btn-telsur:link
+ {
+    color: #ffffff;
+}
+.btn-telsur:hover {
+    opacity: 0.7;
+}
+
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background-color: inherit;
+	font-family: Verdana, Geneva, sans-serif;
+	}
+
+table tr td{
+	padding-left:5px;
+}
+
+#content{
+    float: left;
+    padding: 0;
+    width: 630px !important;
+}	
+
+	
+.form-pago-cuentas-title{
+	height:32px;
+	margin:0px 0px 20px 0px;
+	width:500px;
+	/*border-bottom: 3px solid #00B3B8;*/
+}
+	
+p{
+	font-size:12px;
+	font-family:Verdana, Geneva, sans-serif;
+	color:#444444;
+	}
+
+#form-pago-cuentas{
+	width: 500px;
+	height: auto;
+	border: 1px solid #bbbbbb;
+	background: url(../images/form-paga-cuentas-background.jpg) 0 0 repeat-x;
+	padding-bottom: 30px;
+	
+}
+
+#form-pago-cuentas-documentos{
+    width: 600px;
+	 height: 317px;
+	border: 1px solid #bbbbbb;
+	background: none;
+	margin-top: 0;
+    padding-bottom: 30px;
+    padding-top: 20px;
+    
+}
+
+.form-pago-cuentas-documentos-table-header{
+	text-align: center;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	color: #007F82;
+	font-weight: bold;
+	}
+
+
+.form-pago-cuentas-documentos-data{
+	text-align:center;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:10px;
+	color:#444444;
+
+}
+	
+.form-pago-cuentas-documentos-data-td {
+/*	height: 25px !important;*/
+	
+}
+	
+
+#form-pago-cuentas-ingreso-datos{
+	font-family: Verdana, Geneva, sans-serif;
+	/*height: 170px;*/
+    height: 188px;
+	border: 1px solid #bbbbbb;
+	background: none;
+	padding: 20px 0 30px 32px;
+    width: 570px;
+    color: #444;
+}
+
+#form-pago-cuentas-ingreso-datos span{
+	color: #007F82;
+
+}
+
+
+#form-pago-cuentas-selecciona-medio-pago{
+	font-family: Verdana, Geneva, sans-serif;
+	
+    height: 536px;
+	border: 1px solid #bbbbbb;
+	background: none;
+	padding: 55px 0 30px 0px;
+    color: #444;
+	width: 607
+	
+}
+
+#form-pago-cuentas-comprobante-pago{
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 13px; 
+    /*height: 600px;*/
+	height: 700px;
+	border: 1px solid #bbbbbb;
+	background: none;
+	padding: 10px 0 0px 30px;
+    width: 495px;
+    color: #444;
+}
+#form-pago-cuentas-comprobante-pago-error{
+    font-family: Verdana, Geneva, sans-serif;
+	font-size: 13px; 
+    height: 300px;
+	border: 1px solid #bbbbbb;
+	background: none;
+	padding: 10px 0 0px 30px;
+    width: 495px;
+    color: #444;
+    
+}
+ #contEnvioComprobante{
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 13px; 
+	padding: 10px 0 0px 30px;
+    width: 495px;
+    color: #444;
+}
+
+
+.textbox {
+	font-family: Verdana, Geneva, sans-serif;
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.44);
+    border: 1px solid #A4A4A4;
+    color: #333333;
+    height: 25px;
+    width: 266px;
+}
+
+
+.separador{
+	width:10px; 
+	height:30px;
+}
+
+#buscador {
+	font-size: 18px;
+}
+
+#pbn-portar-tit-cont {
+   
+    height: 93px;
+    margin: 0 auto;
+    position: relative;
+    width: 450px;
+}
+
+
+.left {
+    float: left;
+}
+
+
+.selecciona-empresa{
+	margin: 0 auto;
+}
+
+.elije-texto {
+	color: #666666;
+    font-family: Verdana,Geneva,sans-serif;
+    font-size: 18px;
+    text-align: right;
+
+
+}
+.elije-select {
+	width: 300px;
+
+}
+
+#form-pago-cuentas table{
+    border-collapse: collapse;
+    border-spacing: 0;
+	width:90%;
+	margin:10px 0px 0px 50px;
+	padding:0px;
+	}
+#form-pago-cuentas td{
+	vertical-align:middle;
+	text-align:left;
+	padding:13px;
+	font-size:10px;
+	font-family:Arial;
+	font-weight:normal;
+	color:#000000;	
+}
+#form-pago-cuentas select{
+	border:medium none;
+	}
+
+
+.impar {
+  background-color: #f6f6f6;
+ }
+
+.impar td, .par td {
+   border-bottom: 1px solid #fff;
+   padding: 5px 0;
+}
+
+.par {
+  background-color: #eee;
+ }
+
+
+.total-final {
+    font-family:Verdana, Geneva, sans-serif;
+	font-size:12px;
+    text-align: right;
+    
+}
+.total-final-text {
+    font-size:12px;
+    text-align: right;
+}
+button {
+	background-image:url(../images/form_button.png);
+	text-indent:-9999px;
+	width:92px;
+	height:26px;
+	border:none;
+	cursor: pointer;
+}
+.button2 {
+	background-image:url(../images/form_button2.png);
+	text-indent:-9999px;
+	width:93px;
+	height:26px;
+	border:none;
+	cursor: pointer;
+	display:block;
+}
+.button3 {
+	background-image:url(../images/form_button3.png);
+	text-indent:-9999px;
+	width:93px;
+	height:26px;
+	border:none;
+	cursor: pointer;
+	margin:20px 0px 0px 255px;
+	display:block;
+}
+
+.button4 {
+	background-image:url(../images/btn-imprimir.jpg);
+	text-indent:-9999px;
+	width:93px;
+	height:26px;
+	border:none;
+	cursor: pointer;
+	display:block;
+	float:right;
+}
+
+#enviar-correo{
+	background-image:url(../images/btn-enviar-correo.jpg);
+	text-indent:-9999px;
+	width:93px;
+	height:26px;
+	border:none;
+	cursor: pointer;
+	display:block;
+	float:right;
+}
+#formCorreo{
+	padding-top:3px;
+}
+
+
+.input-total {
+	width: 50px;
+	margin-right: 0px;
+
+}
+
+input {
+	/*border:  1px solid #ccc;*/
+}
+
+
+
+.paga-cuentas-ingreso-datos{
+	margin-top:30px;
+	margin-left:50px;
+}
+
+	
+	
+/*input[type=checkbox].css-checkbox {
+	position: absolute; 
+	overflow: hidden; 
+	clip: rect(0 0 0 0); 
+	height:1px; 
+	width:1px; 
+	margin:-1px; 
+	padding:0;
+	border:0;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+	padding-left:20px;
+	height:18px; 
+	display:inline-block;
+	line-height:18px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:18px;
+	vertical-align: baseline;
+	cursor:pointer;
+	margin-right:10px;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+	background-position: 0 -18px;
+}
+
+.css-label{
+	background-image:url(images/checked.png);
+}
+*/
+
+.button_pagar {
+    background-image: url("../images/boton-pagar.jpg");
+    border: medium none;
+    cursor: pointer;
+    display: block;
+    height: 26px;
+    margin: 20px 12px 0 255px;
+    text-indent: -9999px;
+    width: 92px;
+}
+#page-cover {
+    background-color: #E6ECEE !important;
+	background-image: none;
+    background-repeat: no-repeat;
+    background-position: center top;
+    padding-top: 0px;
+	min-height:200px;
+}
+.confondo_pago_cuentas{
+    background: url(/images/backgrounds/fondo-telsur-neutro.jpg);
+    display: block;
+    min-height: 460px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.contenedor-formulario-pc{
+	/*max-width:620px;*/
+	padding-top:10px;
+	padding-bottom:10px;
+}
+.contenedor-formulario-pc h3 {
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: none;
+    color: #0C7F0B;
+}
+.border-bottom{	
+	border-bottom: 1px dashed #ccc;
+}
+.padding-top-bottom-10{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.pbn-cuadrado-check {
+    border: 3px solid #F6921D;
+    height: 21px;
+    width: 21px;
+	margin-top: 30px;
+	margin-bottom: 30px;	
+}
+
+.pbn-texto-check {
+    margin-left: 2px;
+	margin-top: 30px;
+}
+
+.pbn-texto-check span {
+    color: #666666;
+    font-family: Verdana,Geneva,sans-serif;
+    font-size: 14px;
+}
+
+
+.pbn-cuadrado-check div {
+    position: relative;
+    top: -17px;
+}
+.min-height-70{
+	min-height: 70px !important;
+}
+.min-height-98{
+	min-height: 98px !important;
+}
+.min-height-101{
+	min-height: 101px !important;
+}
+.min-height-106{
+	min-height: 106px !important;
+}
+.tamanio-12{
+	font-size: 12px;
+}
+.tamanio-11{
+	font-size: 11px;
+}
+.tamanio-10{
+	font-size: 10px;
+}
+.tamanio-8{
+	font-size: 8px;
+}
+.titilliumweb{
+	font-family: 'Titillium Web', sans-serif;
+}
+.titilliumweb-bold{
+	font-family: 'Titillium Web', sans-serif;
+	font-weight: bold;
+}
+.color-plomo{
+	color: #666666;
+}
+.color-negro{
+	color: #000;
+}
+.color-verde{
+	color: #0C7F0B;
+}
+.color-verde-claro{
+	color: #00B500;
+}
+.fondo-verde-claro{
+	background-color: #00B500;
+}
+.border-left-right-bottom{
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+.border-top-left-right{
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+}
+.border-top-left{
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+}
+.border-top-right{
+	border-right: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+}
+.border-left{
+	border-left: 1px solid #ccc;
+}
+.border-right{
+	border-right: 1px solid #ccc;
+}
+.border-bottom{
+	border-bottom: 8px solid #00B500;
+}
+.entrada-login{
+	width: 150px;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #CCC;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0 3px 0 3px;
+    color: #999;
+}

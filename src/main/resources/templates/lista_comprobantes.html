@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<input type="hidden" name="_token"
+	value="RPc82SY0roG1mxU1rIXCxM7v2BfY19x1XDGDtwFl">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+<script type="text/javascript">
+			var BASE_URL ='http://' + window.location.host;
+		</script>
+<title>Telefónica del Sur | Pago de Cuentas</title>
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<!-- Google Font: Source Sans Pro -->
+<link
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+	rel="stylesheet">
+<!-- Ionicons -->
+<link rel="stylesheet"
+	href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet"
+	href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- DataTables -->
+<link rel="stylesheet" th:href="@{~/pagos-telsur/css/dataTables.bootstrap4.min.css}">
+<!-- Theme style -->
+<link rel="stylesheet" th:href="@{~/pagos-telsur/css/adminlte.css}">
+<link rel="icon" type="image/png" href="https://www.telsur.cl/media/telefonicadelsur/favicon-telefonicadelsur.png">
+
+
+<style>
+.text-wrap {
+	white-space: normal;
+}
+
+.width-200 {
+	width: 200px;
+}
+</style>
+</head>
+<body class="hold-transition login-page">
+	<div id="cboxOverlay" style="display: none;"></div>
+	<div id="page-cover_body">
+		<iframe title="" width="100%"
+			src="http://www.telsur.cl/embeddable-header" frameborder="0"
+			scrolling="no" th:attr="src=${header}"> </iframe>
+		<div class="container">
+			<!-- Content Wrapper. Contains page content -->
+			<div class="container-fluid">
+				<!-- hidden fields -->
+				<input id="rut" type="hidden" value="" class="hidden"
+					th:attr="value=${rut}"> <input id="empresa" type="hidden"
+					value="" class="hidden" th:attr="value=${empresa}">
+
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<div class="container-fluid">
+						<div class="row mb-2">
+							<div class="col-sm-6">
+								<h1>Reenvío de comprobantes</h1>
+							</div>
+							<div class="col-sm-6">
+								<ol class="breadcrumb float-sm-right">
+									<li class="breadcrumb-item"><a href="#" onclick="history.go(-1);">Inicio</a></li>
+									<li class="breadcrumb-item active">Listado de Pagos</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+					<!-- /.container-fluid -->
+				</section>
+
+				<!-- Main content -->
+				<section class="content d-none d-sm-block">
+					<!-- desktop element -->
+					<div class="row ">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="row">
+										<div class="input-group col-sm-12">
+											<h3 class="col-sm-6 card-title">Listado de Pagos</h3>
+										</div>
+									</div>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body">
+									<div class="alert alert-success" role="alert"
+										style="display: none">Enviado Correctamente!</div>
+									<div class="alert alert-danger" role="alert"
+										style="display: none">Ups! no se pudo enviar.</div>
+									<table id="table-data"
+										class="table table-bordered table-striped table-hover dt-responsive display nowrap"
+										cellspacing="0">
+										<thead>
+											<tr>
+												<th>Fecha Pago</th>
+												<th>Monto Pago</th>
+												<th>Id Pago</th>
+												<th>Documentos Pagados</th>
+												<th>Acciones</th>
+											</tr>
+										</thead>
+									</table>
+								</div>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- mobile element -->
+
+					<!-- /.row -->
+				</section>
+				<section class="content d-block d-sm-none">
+					<div class="row">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="row">
+										<div class="input-group col-sm-12">
+											<h3 class="col-sm-6 card-title">Listado de Pagos</h3>
+
+										</div>
+									</div>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body">
+									<div class="alert alert-success" role="alert"
+										style="display: none">Enviado Correctamente!</div>
+									<div class="alert alert-danger" role="alert"
+										style="display: none">Ups! no se pudo enviar.</div>
+									<table id="table-data-xs"
+										class="table table-bordered table-striped table-hover dt-responsive display nowrap"
+										cellspacing="0">
+										<thead>
+											<tr>
+												<th>Fecha</th>
+												<th>Monto</th>
+												<th>Acciones</th>
+											</tr>
+										</thead>
+									</table>
+								</div>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+						<!-- /.col -->
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+</body>
+<div id="page-cover">
+	<iframe title="" src="http://www.telsur.cl/embeddable-footer"
+		frameborder="0" scrolling="0" width="100%" height="100%"
+		class="iframeFooter" th:attr="src=${footer}"></iframe>
+	<style>
+.datos-con-margin-top {
+	margin-top: 0px;
+}
+
+@media ( min-width : 1200px) {
+	.iframeFooter {
+		height: 830px;
+	}
+	.confondo {
+		height: 460px;
+	}
+	.datos-con-margin-top {
+		margin-top: 59px;
+	}
+}
+
+@media ( max-width : 1199px) and (min-width: 1024px) {
+	.iframeFooter {
+		height: 910px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 1023px) and (min-width: 992px) {
+	.iframeFooter {
+		height: 800px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 991px) and (min-width: 768px) {
+	.iframeFooter {
+		height: 630px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 767px) and (min-width: 736px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 735px) and (min-width: 667px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 666px) and (min-width: 600px) {
+	.iframeFooter {
+		height: 670px;
+	}
+}
+
+@media ( max-width : 599px) and (min-width: 568px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 567px) and (min-width: 414px) {
+	.iframeFooter {
+		height: 1374px;
+	}
+}
+
+@media ( max-width : 413px) and (min-width: 384px) {
+	.iframeFooter {
+		height: 480px;
+	}
+}
+
+@media ( max-width : 383px) and (min-width: 375px) {
+	.iframeFooter {
+		height: 1374px;
+	}
+}
+
+@media ( max-width : 374px) and (min-width: 320px) {
+	.iframeFooter {
+		height: 1430px;
+	}
+}
+
+@media ( max-width : 319px) and (min-width: 240px) {
+	.iframeFooter {
+		height: 1500px;
+	}
+}
+
+@media ( max-width : 240px) {
+	.iframeFooter {
+		height: 1500px;
+	}
+}
+</style>
+</div>
+<!-- Bootstrap 4 -->
+<script th:src="@{~/pagos-telsur/js/jquery-3.2.1.min.js}"></script>
+<script
+	th:src="@{~/pagos-telsur/js/bootstrap.js}"></script>
+<script
+	th:src="@{~/pagos-telsur/js/jquery.dataTables.min.js}"></script>
+<script
+	th:src="@{~/pagos-telsur/js/dataTables.bootstrap4.min.js}"></script>
+<!-- FastClick -->
+<script th:src="@{~/pagos-telsur/js/fastclick.js}"></script>
+<!-- Valida Rut -->
+<script th:src="@{~/pagos-telsur/js/jquery.rut.js}"></script>
+
+<script th:src="@{~/pagos-telsur/js/dataTables.responsive.js}"></script>
+<!--sweet Alert -->
+<script th:src="@{~/pagos-telsur/js/sweetalert.min.js}"></script>
+<script th:src="@{~/pagos-telsur/js/moment.min.js}"></script>
+
+<!-- page script -->
+<script>	
+		/**
+		 * @param  url : this is url to send the request
+		 * @param  type : method type request
+		 * @param  callback : function get callback response
+		 * @param  data : params to send in request
+		 **/
+		function sendRequest(url,type, callback, data = {}){
+		    $.ajax({
+				url  : url,
+				type : type,
+				data : data,
+				success: callback
+			});
+		}
+
+		/**
+		 *
+		 * callback function
+		 * @param  data: this is the response
+		 **/
+		function addRowTable(data){
+		    if (data.length != 0){
+                var collectionRow = [];
+                var collectionRowXs = [];
+		        $.each(data,function (index, v) {
+			        console.log("host : " + window.location.host);
+                    //$.each(value,function (ind, v) {
+                    	
+                    	var dateFormat = moment(v.fechaPago,"YYYYMMDDHHmmss").format("DD/MM/YYYY HH:mm:ss");
+                        var date = new Date(dateFormat);
+                        
+						var formatter = (date.getDate()) + '/' + (date.getMonth() + 1) + '/' +  date.getFullYear()+' '+
+								date.getHours()+':'+date.getMinutes();
+                        var row = {
+							"date":     dateFormat,
+							"amount":   formatNumber.new(v.monto),
+							"transaction":v.idtrx,
+							"qty_doc": v.documentosPagados,
+							"action":     "<div class=\"margin\">\n" +
+							"<a class=\"btn btn-app sender-mail\" data-id='"+v.idtrx+"'>\n" +
+							"<span class=\"badge bg-info\">Email</span>\n" +
+							"<i class=\"fa fa-envelope\"></i> Enviar" +
+							"</a>\n" +
+							"</div>"
+						};
+						collectionRow.push(row);
+
+						var rowXs = {
+                            "date"   :   dateFormat.replace(" ","<br>"),
+                            "amount" :   formatNumber.new(v.monto),
+							"action" :
+							"<div class=\"margin\">" +
+								"<a class=\"btn btn-info btn-xs \" data-id='"+v.idtrx+"'>Enviar</a>"+
+							"</div>"
+
+						};
+						collectionRowXs.push(rowXs);
+		        	//});
+		        });
+                $('#table-data').DataTable().rows.add(collectionRow).draw();
+                $('#table-data-xs').DataTable().rows.add(collectionRowXs).draw();
+			}
+		}
+
+		
+		var formatNumber = {
+			 separador: ".", // separador para los miles
+			 sepDecimal: ',', // separador para los decimales
+			 formatear:function (num){
+				 num +='';
+				 var splitStr = num.split('.');
+				 var splitLeft = splitStr[0];
+				 var splitRight = splitStr.length > 1 ? this.sepDecimal + splitStr[1] : '';
+				 var regx = /(\d+)(\d{3})/;
+				 
+				 while (regx.test(splitLeft)) {
+				 	splitLeft = splitLeft.replace(regx, '$1' + this.separador + '$2');
+				 }
+				 return this.simbol + splitLeft +splitRight;
+			 },
+			 new:function(num, simbol){
+				 this.simbol = simbol ||'';
+				 return this.formatear(num);
+			 }
+		}
+
+        /**
+		 * callback ajax function
+         * @param  data
+         */
+		function showMessage(data){
+		    var response = jQuery.parseJSON(data);
+		    var msg = '';
+		    var title = '';
+		    if (response.success){
+                //$('.alert-success').show().delay(3000).fadeOut(500);
+				msg = "Se ha enviado correctamente";
+				title = "Muy Bien!";
+			}
+			else{
+                //$('.alert-danger').show().delay(3000).fadeOut(500);
+				msg = "Ha ocurrido un error";
+				title = "Ups!";
+			}
+
+            swal({
+                title: title,
+                text: msg,
+                icon: (response.success)?"success":"error"
+            });
+
+		}
+
+        $(document).ready(function () {
+        	  var espanol = {
+                 "sProcessing": "Procesando...",
+	              "sLengthMenu": "Mostrar _MENU_ registros",
+	              "sZeroRecords": "No se encontraron resultados",
+	              "sInfo": "Mostrando desde _START_ hasta _END_ de _TOTAL_ registros",
+	              "sInfoEmpty": "No existen registros",
+	              "sInfoFiltered": "(filtrado de un total de _MAX_ líneas)",
+	              "sInfoPostFix": "",
+	              "sSearch": "Buscar:",
+	              "sUrl": ""
+              };
+
+            
+            $('#table-data').DataTable({
+                "oLanguage" : espanol,
+                "responsive": true,
+                "paging": false,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": false,
+                "info": true,
+                "autoWidth": false,
+                "columns": [
+                    {data : "date"},
+					{data: "amount",
+                        render: function ( data, type, row ) {
+                            return '$'+ data;
+                        }
+					},
+					{data: "transaction"},
+					{data: "qty_doc"},
+					{data: "action"}
+                ],
+                columnDefs: [
+                    {
+                        render: function (data, type, full, meta) {
+                            return "<div class='text-wrap width-400'>" + data + "</div>";
+                        },
+                        targets: 0
+                    }
+                ]
+            });
+
+            $('#table-data-xs').DataTable({
+            	"oLanguage" : espanol,
+                "responsive": true,
+                "paging": false,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": false,
+                "info": false,
+                "autoWidth": false,
+                "columns": [
+                    {data : "date"},
+                    {data: "amount",
+                        render: function ( data, type, row ) {
+                            return '$'+ data;
+                        }
+                    },
+					{data: "action"}
+                ]
+            });
+
+            var rut = $("#rut").val();
+            var empresa = $("#empresa").val();
+
+			var token = $("meta[name='_csrf']").attr("content");
+			var header = $("meta[name='_csrf_header']").attr("content");
+			//envia token de URL protegida
+			$(document).ajaxSend(function(e,xhr,options) {
+				xhr.setRequestHeader(header, token);
+			});            
+            var url = '/pagos-telsur/api/pagos/listar_comprobantes/' + rut + '/' + empresa;
+            $('#table-data')
+                .DataTable()
+                .clear()
+                .draw();
+
+            $('#table-data-xs')
+                .DataTable()
+                .clear()
+                .draw();
+
+            sendRequest(url, 'GET', addRowTable);
+
+            $('body').on('click', '.btn-app, .btn-xs', function (event) {
+
+               swal({
+                    text: 'Envío de correo',
+                    content: "input",
+                    button: {
+                        text: "Enviar",
+                        closeModal: false,
+                    },
+                })
+				   .then(name => {
+					if (!name){
+                        swal(
+                            'Error',
+                            'Ingresa un Correo válido!',
+                            'error'
+                        )
+					}
+					console.log("mail : " + name);
+				   	var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				   	if (!regex.test(name)) {
+					   	console.log("mail inválido");
+                        swal(
+                            'Error',
+                            'Ingresa un correo válido',
+                            'error'
+                        )
+                        return;
+					}
+
+					//modo de envio de headers al utilizar fetch
+					var myHeaders = new Headers();
+					myHeaders.append(header, token);
+                    var url = '/pagos-telsur/api/pagos/sendComprobante/'+$(this).attr('data-id')+'/'+name+'/';
+                    var init = { method: 'GET', headers: myHeaders};
+                    return fetch(url,init)
+						.then(response =>{
+						    if (!response.ok){
+						        throw new Error('Error al enviar comprobante')
+							}
+		
+							return response;
+						})
+						.catch(err => {
+                            if (err) {
+                                swal("Ups", "Algo falló", "error");
+                            } else {
+                                swal.stopLoading();
+                                swal.close();
+                            }
+                        })
+				   })
+				   .then((result) =>{
+                       if (result.ok) {
+                           console.log();
+                           swal(
+                               'Ok',
+                               'Enviado correctamente',
+                               'success'
+                           )
+                       }
+                       else {
+
+					   }
+
+				   })
+
+            });
+        });
+
+
+	</script>
+
+</html>

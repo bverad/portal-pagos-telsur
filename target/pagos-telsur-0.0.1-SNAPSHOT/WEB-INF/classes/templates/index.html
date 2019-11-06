@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<input type="hidden" name="_token"
+	value="8j5JOhJTjj1whYF5Howv4ltHc2Noe9ThNeQci9vP">
+<head>
+	<meta charset="utf-8">
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+	<meta http-equiv="X-UA-Compatible" content="text/html">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="Plataforma administrativa DEVETEL" />
+	<meta name="author" content="Bruno vera" />
+	<meta name="keyword" content="Login" />
+
+	<script type="text/javascript">
+			var BASE_URL = 'http://pagos.telsur.cl/';
+	</script>
+	<title>Telef&oacute;nica del Sur | Pago de Cuentas</title>
+
+	<link rel="stylesheet" type="text/css" th:href="@{~/pagos-telsur/css/allware.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{~/pagos-telsur/css/allware.documents.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{~/pagos-telsur/css/jquery.selectbox.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{~/pagos-telsur/css/style.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{~/pagos-telsur/css/new-style.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{~/pagos-telsur/css/jquery-select-box.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{~/pagos-telsur/css/bootstrap.css}"/>
+	
+	<link rel="icon" type="image/png" href="https://www.telsur.cl/media/telefonicadelsur/favicon-telefonicadelsur.png">
+	
+
+</head>
+
+<script th:src="@{~/pagos-telsur/js/jquery-3.2.1.min.js}"></script>
+<script type="text/javascript"> 
+	$(document).ready(function() {
+		obtenerMensajeIE();
+	});
+	
+	function isIE() {
+	    var ua = window.navigator.userAgent; //Check the userAgent property of the window.navigator object
+	    var msie = ua.indexOf('MSIE '); // IE 10 or older
+	    var trident = ua.indexOf('Trident/'); //IE 11
+	
+	    return (msie > 0 || trident > 0);
+	}
+	
+	
+	//function to show alert if it's IE
+	function obtenerMensajeIE(){
+		console.log("Determinando browser...")
+	    if(isIE()){
+	    	console.log("Browser...: internet explorer 11 o inferior.");
+	    	var protocol = window.location.protocol;
+	    	var host =  protocol + "//"  + window.location.host + "/pagos-telsur";
+	    	var mensaje = "<div style='text-align:center;' class='alert alert-danger' role='alert'> <span>Navegador no soportado, por favor utilice alguna de estas alternativas: </br></br> <a href='https://www.mozilla.org/es-ES/firefox/new/?redirect_source=getfirefox-com' target='_blank'><img src='" + host + "/img/firefox.png' height='100px' width='100px'/></a> <a href='https://www.google.cl/intl/es-419/chrome/' target='_blank'><img src='" + host + "/img/chrome.png'  height='100px' width='100px'/></a> <a href='https://www.microsoft.com/es-cl/windows/microsoft-edge' target='_blank'><img src='" + host + "/img/iedge.png'   height='100px' width='100px'/></a> <a href='https://www.opera.com/es/download' target='_blank'><img src='" + host + "/img/opera.png'   height='100px' width='100px'/></a> <span></div>" 
+		    $("#formLogin" ).prepend(mensaje);
+		    $('#txtRut').prop('disabled', true);
+		    $('#btnsubmit').prop('disabled', true);
+	    }else{
+	    	console.log("No corresponde a IE");
+	    }
+	}
+</script>
+
+<body>
+	<div id="cboxOverlay" style="display: none;"></div>
+	<div id="page-cover_body">
+	<iframe title="" width="100%"
+			src="http://www.telsur.cl/embeddable-header" frameborder="0"
+			scrolling="no" th:attr="src=${header}"></iframe>
+		<div class="confondo_pc">
+			
+			<div class="row">
+				<div class="form-group col-sm-2 col-sm-offset-2 col-xs-12"></div>
+			</div>
+
+			<div class="body-consulta section-container">
+				<div class="col-xs-offset-2 col-sm-offset-2">
+					<h1 class="titilliumweb-bold">BIENVENIDOS AL PAGO DE CUENTAS</h1>
+					<h4 class="titilliumweb">INGRESA UN RUT</h4>
+				</div>
+
+				<div class="container" style="width:100%">
+					<div class="row col-sm-offset-2">
+						<div
+							class="body-consulta-corners col-sm-6 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+							<form class="form-horizontal" id="formLogin" name="formLogin"
+								action="/pagos-telsur/pagos/lista_deudas" method="post">
+								<!-- control de errores -->
+								<span th:if="${mensaje}">
+									<div id="alert-cdeuda">
+										<div class='alert alert-danger' role='alert'>
+											<span th:text="${mensaje}"></span>
+										</div>
+									</div>
+								</span>
+
+								<div class="text-center"></div>
+								<div class="form-group">
+									<input type="hidden" name="tipo" value="" id="tipo">
+								</div>
+								<div class="form-group">
+									<label
+										class="col-sm-2 col-sm-offset-2 col-xs-12 control-label text-center"
+										for="txtRut">R.U.T</label>
+									<div class="col-sm-6 col-xs-12">
+										<input type="text" class="form-control" id="txtRut"
+											name="txtRut" maxlength="9" placeholder="">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="separator-consulta">
+										<hr class="consulta" />
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="hidden-xs">
+										<div class="col-sm-2 col-sm-offset-2">
+											<!--<a href="https://docs.google.com/forms/d/e/1FAIpQLSdtdiV_bzNCCXKHyx-5QzuWTVrJtaWMAGa3dreejHPC_ZH3tQ/viewform" target="_blank" class="btn btn-telsur titilliumweb hidden" style="background-color: #ed1c24;">Queremos conocer tu opinión</a>-->
+										</div>
+										<div class="col-sm-4 col-sm-offset-2">
+											<!-- <a href="javascript:;" onClick="return ValidaIngreso();"
+												class="btn btn-telsur titilliumweb">Consultar</a> -->
+											<input type="submit" style="text-transform: capitalize;" class="btn btn-telsur titilliumweb" 
+												id="btnsubmit" name="btnsubmit" value="Consultar" data-after-submit-value="Consultando..."/>
+										</div>
+									</div>
+									<div class="visible-xs">
+										<div class="button-consulta-xs col-xs-11">
+											<!-- <a href="javascript:;" onClick="return ValidaIngreso();"
+												class="btn btn-telsur titilliumweb">Consultar</a> -->
+											<input type="submit" class="btn btn-telsur titilliumweb" 
+												id="btnsubmit" name="btnsubmit" value="Consultar" data-after-submit-value="Consultando..."/>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+
+			<div class="row">
+				<div class="form-group col-sm-2 col-sm-offset-2 col-xs-12"></div>
+			</div>
+
+
+		</div>
+	</div>
+</body>
+<div id="page-cover">
+	<iframe title="" src="http://www.telsur.cl/embeddable-footer"
+		frameborder="0" scrolling="0" width="100%" height="100%"
+		class="iframeFooter" th:attr="src=${footer}"></iframe>
+<style>
+.datos-con-margin-top {
+	margin-top: 0px;
+}
+
+@media ( min-width : 1200px) {
+	.iframeFooter {
+		height: 830px;
+	}
+	.confondo {
+		height: 460px;
+	}
+	.datos-con-margin-top {
+		margin-top: 59px;
+	}
+}
+
+@media ( max-width : 1199px) and (min-width: 1024px) {
+	.iframeFooter {
+		height: 910px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 1023px) and (min-width: 992px) {
+	.iframeFooter {
+		height: 800px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 991px) and (min-width: 768px) {
+	.iframeFooter {
+		height: 630px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 767px) and (min-width: 736px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 735px) and (min-width: 667px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 666px) and (min-width: 600px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 599px) and (min-width: 568px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 567px) and (min-width: 414px) {
+	.iframeFooter {
+		height: 1374px;
+	}
+}
+
+@media ( max-width : 413px) and (min-width: 384px) {
+	.iframeFooter {
+		height: 480px;
+	}
+}
+
+@media ( max-width : 383px) and (min-width: 375px) {
+	.iframeFooter {
+		height: 1374px;
+	}
+}
+
+@media ( max-width : 374px) and (min-width: 320px) {
+	.iframeFooter {
+		height: 1430px;
+	}
+}
+
+@media ( max-width : 319px) and (min-width: 240px) {
+	.iframeFooter {
+		height: 1500px;
+	}
+}
+
+@media ( max-width : 240px) {
+	.iframeFooter {
+		height: 1500px;
+	}
+}
+</style>
+</div>
+ 
+<script th:src="@{~/pagos-telsur/js/codes.js}"></script>
+<script th:src="@{~/pagos-telsur/js/funciones.js}"></script>
+<script th:src="@{~/pagos-telsur/js/bootstrap.js}"></script>
+<script th:src="@{~/pagos-telsur/js/sweetalert.min.js}"></script>
+
+<script type="text/javascript" th:inline="javascript">
+	$('div.alert').not('.alert-important').delay(5000).fadeOut(500);
+	$(document).ready(function () {
+		/*<![CDATA[*/
+		    var isServicioDisponible = /*[[${isServicioDisponible}]]*/ 'default';
+		    var mensajeFueraServicio = /*[[${mensajeFueraServicio}]]*/ 'default';
+		/*]]>*/
+		//servicio no disponible
+		if(isServicioDisponible != "1"){	
+			swal(
+					'Alerta',
+					mensajeFueraServicio,
+					'warning',
+					
+				  	{	
+						closeOnClickOutside: false,
+					  	closeOnEsc: false,
+					  	buttons: {
+					    	cancel: false,
+					    	confirm: false
+					  	}
+				  	});
+		}else{
+			console.log("Servicio disponible");
+		}
+        
+		
+	});
+</script>
+
+</html>

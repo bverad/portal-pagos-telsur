@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<input type="hidden" name="_token" value="8j5JOhJTjj1whYF5Howv4ltHc2Noe9ThNeQci9vP">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<script type="text/javascript">
+			var BASE_URL = 'http://pagos.telsur.cl/';
+		</script>
+		<title>Telef&oacute;nica del Sur | Pago de Cuentas</title>
+		<!-- Analytics -->
+<script type="text/javascript">
+
+
+
+var _gaq = _gaq || []; 
+ _gaq.push(['_setAccount', 'UA-3235425-1']);  
+ _gaq.push(['_trackPageview']);  
+ _gaq.push(['_setCookieTimeout', 86400000]);
+ 
+ (function() {    
+ 	var ga = document.createElement('script'); 
+		ga.type = 'text/javascript'; 
+		ga.async = true;    
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    
+	var s = document.getElementsByTagName('script')[0]; 
+	s.parentNode.insertBefore(ga, s);  
+})();
+</script>
+<!-- Fin Analytics -->
+
+<!-- Grabar pantalla -->
+<script type="text/javascript">
+    window.smartlook||(function(d) {
+    var o=smartlook=function(){ o.api.push(arguments)},s=d.getElementsByTagName('script')[0];
+    var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+    c.charset='utf-8';c.src='//rec.getsmartlook.com/bundle.js';s.parentNode.insertBefore(c,s);
+    })(document);
+    smartlook('init', 'a6f2117992b8c256516b81fef9cbe91440f9f9d0');
+</script>
+<!-- Fin pantalla -->
+
+
+
+		<!--<div id="sidebar" class="grid_4" style="position: fixed !important;right:0px;">
+    <div id="barra-redes">
+    	<div style="padding-top:10px;">
+        	<a id="click-to-call" onClick="lightbox('/click-to-call/',430,374);" href="javascript:;"></a>
+        </div>
+        <div class="clear"></div>
+        <div>
+        	<a id="chat" onClick="javascript:csTimeout=0;" href="javascript:openLiveHelp('http://soy.telsur.cl/chat/livehelp_js.php?eo=1&amp;department=4&amp;serversession=1&amp;pingtimes=15&amp;usetable=N')"></a> 
+        </div>
+        <div class="clear"></div>
+        <div>
+        	<a id="formularioventa" onClick="lightbox('/formulario-mgr/lightbox/lightbox-formulario-vendedor.php',400,420);" href="javascript:;"></a>
+		</div>  
+        <div class="clear"></div>
+        <div>
+        	<a id="skype" target="_blank" href="/index.php?cs=999999&amp;oc=20149&amp;pl[100]=internet"></a>
+        </div>
+        <div class="clear"></div>
+        <div>
+        	<a id="formulario" onClick="lightbox('/formulario-mgr/lightbox/lightbox-formulario-home.php',400,355);" href="javascript:;"></a>
+		</div>            
+    </div>
+</div>  -->		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+			
+	<link rel="stylesheet" href="http://pagos.telsur.cl/css/allware.css">
+	<link rel="stylesheet" href="http://pagos.telsur.cl/css/allware.documents.css">
+	<link rel="stylesheet" href="http://pagos.telsur.cl/css/jquery.selectbox.css">
+	<link rel="stylesheet" href="http://pagos.telsur.cl/css/style.css">
+	<link rel="stylesheet" href="http://pagos.telsur.cl/css/new-style.css">
+	<link rel="stylesheet" href="http://pagos.telsur.cl/css/jquery-select-box.css">
+	<link rel="stylesheet" href="http://pagos.telsur.cl/css/bootstrap.css">
+	</head>
+	<body>
+		<div id="cboxOverlay" style="display: none;"></div>
+		<div id="page-cover_body">
+			<iframe title="" width="100%" src="http://www.telsur.cl/embeddable-header" frameborder="0" scrolling="no"></iframe>				<div class="confondo_pc">
+
+		<div class="row">
+			<div class="form-group col-sm-2 col-sm-offset-2 col-xs-12">
+			
+			</div>
+		</div>
+
+		<div class="body-consulta section-container">
+			<div class="col-xs-offset-2 col-sm-offset-2">
+				<h1 class="titilliumweb-bold">BIENVENIDOS AL PAGO DE CUENTAS</h1>
+				<h4 class="titilliumweb">INGRESA UN RUT</h4>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-group col-sm-2 col-sm-offset-2 col-xs-12">
+			
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row col-sm-offset-2">
+				<div class="body-consulta-corners col-sm-6 col-sm-offset-1 col-xs-10 col-xs-offset-1">	
+					<form class="form-horizontal" id="formLogin" name="formLogin"  action="/pagos-telsur/pagos/lista_deudas" method="post">
+						<!-- control de errores -->
+						<div id="alert-cdeuda">
+						</div>
+						
+						<div class="text-center"></div>
+						<div class="form-group">
+							<input type="hidden" name="tipo" value="" id="tipo">
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-offset-2 col-xs-12 control-label text-center" for="txtRut">R.U.T</label>
+							<div class="col-sm-6 col-xs-12">
+								<input type="text" class="form-control" id="txtRut" name="txtRut" maxlength="12" placeholder="">
+						    </div>
+						</div>
+						<div class="form-group">
+							<div class="separator-consulta"><hr class="consulta"/></div>
+						</div>
+						<div class="form-group">
+							<div class="hidden-xs">
+								<div class="col-sm-2 col-sm-offset-2">
+									<!--<a href="https://docs.google.com/forms/d/e/1FAIpQLSdtdiV_bzNCCXKHyx-5QzuWTVrJtaWMAGa3dreejHPC_ZH3tQ/viewform" target="_blank" class="btn btn-telsur titilliumweb hidden" style="background-color: #ed1c24;">Queremos conocer tu opinión</a>-->
+								</div>
+								<div class="col-sm-4 col-sm-offset-2">
+									<a href="javascript:;" onClick="return ValidaIngreso();" class="btn btn-telsur titilliumweb">Consultar</a>
+								</div>
+							</div>
+							<div class="visible-xs">
+								<div class="button-consulta-xs col-xs-11">
+									<a href="javascript:;" onClick="return ValidaIngreso();" class="btn btn-block btn-telsur titilliumweb">Consultar</a>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+		</div>
+	</body>
+	<div id="page-cover">
+		<iframe title="" src="http://www.telsur.cl/embeddable-footer" frameborder="0" scrolling="0" width="100%" height="100%" class="iframeFooter"></iframe>
+<style>
+    .datos-con-margin-top{
+        margin-top: 0px;
+    }
+    @media (min-width: 1200px){
+        .iframeFooter{
+            height: 670px;
+        }
+        .confondo{
+            height:460px;
+        }
+        .datos-con-margin-top{
+            margin-top: 59px;
+        }
+    }
+    @media (max-width: 1199px) and (min-width: 1024px){
+        .iframeFooter{
+            height: 680px;
+        }
+        .confondo{
+            height:460px;
+        }
+    }
+    @media (max-width: 1023px) and (min-width: 992px){
+        .iframeFooter{
+            height: 800px;
+        }
+        .confondo{
+            height:460px;
+        }
+    }
+    @media (max-width: 991px) and (min-width: 768px){
+        .iframeFooter{
+            height: 1370px;
+        }
+        .confondo{
+            height:460px;
+        }
+    }
+    @media (max-width: 767px) and (min-width: 736px){
+        .iframeFooter{
+            height: 1374px;
+        }
+    }
+    @media (max-width: 735px) and (min-width: 667px){
+        .iframeFooter{
+            height: 1374px;
+        }
+    }
+    @media (max-width: 666px) and (min-width: 600px){
+        .iframeFooter{
+            height: 1374px;
+        }
+    }
+    @media (max-width: 599px) and (min-width: 568px){
+        .iframeFooter{
+            height: 1374px;
+        }
+    }
+    @media (max-width: 567px) and (min-width: 414px){
+        .iframeFooter{
+            height: 1374px;
+        }
+    }
+    @media (max-width: 413px) and (min-width: 384px){
+        .iframeFooter{
+            height: 1374px;
+        }
+    }
+    @media (max-width: 383px) and (min-width: 375px){
+        .iframeFooter{
+            height: 1374px;
+        }
+    }
+    @media (max-width: 374px) and (min-width: 320px){
+        .iframeFooter{
+            height: 1430px;
+        }
+    }
+    @media (max-width: 319px) and (min-width: 240px){
+        .iframeFooter{
+            height: 1500px;
+        }
+    }
+    @media (max-width: 240px){
+        .iframeFooter{
+            height: 1500px;
+        }
+    }
+</style>	</div>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/codes.js"></script>
+	<!--<script src="http://pagos.telsur.cl/js/jquery.selectbox-0.6.1.js"></script>
+	<script src="http://pagos.telsur.cl/js/jquery.accordion.source.js"></script>-->
+	<script th:src="@{~/pagos-telsur/js/funciones.js}"></script>
+	<script src="js/bootstrap.js"></script>
+
+	<script>
+		$('div.alert').not('.alert-important').delay(5000).fadeOut(500);
+	</script>
+
+</html>

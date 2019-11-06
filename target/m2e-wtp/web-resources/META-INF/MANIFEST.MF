@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: pagos-telsur
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: bvera
+Implementation-Vendor-Id: org.devetel
+Build-Jdk: 1.8.0_131
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/pagos-telsur
+Created-By: Maven Integration for Eclipse
+Main-Class: cl.devetel.pagostelsur.PagosTelsurApplication
+

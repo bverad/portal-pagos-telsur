@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<input type="hidden" name="_token"
+	value="tSC1TBE5PdVmx4IXQNsS426rCbYA4cyEMgtA5kkr">
+<input type="hidden" name="flagSeleccionMedioPago" value=""
+	th:attr="value=${flagSeleccionMedioPago}">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+
+<script type="text/javascript">
+			var BASE_URL = 'http://pagos.telsur.cl/';
+		</script>
+<title>Telef&oacute;nica del Sur | Pago de Cuentas</title>
+<!-- Analytics -->
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
+<link rel="stylesheet" th:href="@{~/pagos-telsur/css/allware.css}">
+<link rel="stylesheet" th:href="@{~/pagos-telsur/css/allware.documents.css}">
+<link rel="stylesheet" th:href="@{~/pagos-telsur/css/bootstrap.css}">
+<link rel="icon" type="image/png" href="https://www.telsur.cl/media/telefonicadelsur/favicon-telefonicadelsur.png">
+
+</head>
+<body>
+	<div id="cboxOverlay" style="display: none;"></div>
+	<div id="page-cover_body">
+		<iframe title="" width="100%"
+			src="http://www.telsur.cl/embeddable-header" frameborder="0"
+			scrolling="no" th:attr="src=${header}"></iframe>
+		<div class="container">
+			<div class="row ">
+				<div class="col-xs-12 col-sm-8">
+					<div class="">
+						<div class="">
+							<h1 class="titilliumweb-bold">BIENVENIDOS AL PAGO DE CUENTAS</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row ">
+				<div class="col-xs-12 col-sm-8">
+					<div class="">
+						<div class="">
+							<h4 class="titilliumweb">SELECCIONE FORMA DE PAGO</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-xs-12information">
+					<div class="user-information col-sm-2 col-xs-12">
+						<div class="row user-title text-center">R.U.T</div>
+						<div class="row user-title-body text-center">
+							<span th:text="${rutFormateado}"></span>
+						</div>
+					</div>
+					<div class="user-steps col-sm-10 col-xs-12"
+						style="margin-top: 20px;">
+						<div class="row  pull-right">
+							<div class="col-sm-12 col-xs-12">
+								<img th:src="@{~/pagos-telsur/img/step_02.png}" alt=""
+									class="img-responsive">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="progress hidden" id="progressbar">
+				<div class="progress-bar progress-bar-success" role="progressbar"
+					aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+					style="width: 40%"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12 information">
+					<div class="payment-information col-sm-12 col-xs-12"
+						id="container-scrolling">
+						<div class="row payment-title text-center">SELECCIONE SU
+							MEDIO DE PAGO</div>
+						<div class="row payment-title-body text-center">
+
+							<!-- control de errores -->
+							<div id="alert-cdeuda">
+								<span th:if="${error != null}">
+									<div class='alert alert-danger' role='alert'>
+										<span th:text="${error}"></span>
+									</div>
+								</span>
+							</div>
+
+							<input type="hidden" id="transaccion" name="transaccion"
+								th:attr="value=${transaccion}">
+								<input type="hidden" id="csrfParameter" name="csrfParameter"
+								th:attr="value=${_csrf.parameterName}">
+								<input type="hidden" id="csrfToken" name="csrfToken"
+								th:attr="value=${_csrf.token}">
+												
+							<div class="col-sm-4 col-sm-offset-2 col-xs-12" 
+								style="margin-left:10%"
+								th:attr="style=${#arrays.length(botonesList) == 1 ? 'margin-left: 32%' : 'margin-left: 10%'}"
+								th:each="boton : ${botonesList}">
+
+								<form action="" id="" method="post" target="ventanaForm"
+									th:attr="action=${boton.url},
+										id=${'form_' + boton.id}">
+									<!-- ID del medio pago -->
+									<input type="hidden" id="SolicitudCredito"
+										name="SolicitudCredito" value=""
+										th:attr="value=${boton.solicitudEnc}"> <input
+										type="hidden" id="IdCanal" name="IdCanal" value=""
+										th:attr="value=${boton.idCanal}"> <input type="hidden"
+										id="" value=""
+										th:attr="id=${'mpAlto' + boton.id},
+											name=${'mpAlto' + boton.id},
+											value=${boton.alto}">
+									<input type="hidden" id="" value=""
+										th:attr="id=${'mpAncho' + boton.id},
+											name=${'mpAncho' + boton.id},
+											value=${boton.ancho}">
+								</form>
+								
+								
+								<input class="pay-type" type="checkbox"
+									onclick="enableButtonPayment()" data-type data-url=""
+									th:checked="${boton.id == btnWebpay}"
+									th:attr="id=${'cb'+ boton.id},
+ 											name='pay-type',
+ 											value=${boton.nombre},
+ 											width=${boton.ancho}, 
+ 											height=${boton.alto},
+ 											data-url=${boton.url},
+ 											data-btnid=${boton.id}">
+								<label th:attr="for=${'cb'+ boton.id}"> <img
+									th:src="${boton.img}" class="img-responsive"
+									th:attr="
+ 										width=${boton.ancho},
+ 										height=${boton.alto}" />
+								</label>
+
+							</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-email-input col-sm-6  col-xs-12 bg-success">
+						<form id="_form-payment" class="form-inline">
+							<div class="form-group">
+								<input id="token_ws" name="token_ws" type="text"
+									class="form-control hidden"> <label class="sr-only"
+									for="form-email">Correo Electr&oacute;nico</label>
+								<div class="input-group">
+									<div class="input-group-addon">Correo Electr&oacute;nico</div>
+									<input type="email" class="form-control" id="email"
+										placeholder="">
+								</div>
+							</div>
+						</form>
+						<form class="hidden"
+							action="https://www.servipag.com/BotonPago/BotonPago/Pagar"
+							id="servipag_form">
+							<input class="hidden" name="xml" value="" id="_xml">
+						</form>
+					</div>
+					<div
+						class="form-email-text col-sm-6 col-xs-12 bg-success hidden-xs">
+						<p style="font-size: 0.95em;">
+							La informaci&oacute;n de <b>correo electr&oacute;nico</b> solo se
+							utilizar&aacute; con el fin de notificar la informaci&oacute;n
+							del pago.
+						</p>
+					</div>
+					<div class="col-sm-6 col-xs-12 bg-success visible-xs">
+						<p style="font-size: 0.95em;">
+							La informaci&oacute;n de <b>correo electr&oacute;nico</b> solo se
+							utilizar&aacute; con el fin de notificar la informaci&oacute;n
+							del pago.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div id="alert-mail" class="alert alert-danger text-center"
+				style="display: none;"></div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="col-sm-10" style="padding: 0 10px 0 5px;">
+						<div class="form-total  text-center">
+							<p>
+								$<span id="total-amount" th:text="${montoTotal}"></span>
+							</p>
+						</div>
+					</div>
+					<div class="form-step col-sm-2 text-center">
+						<button type="button" class="btn btn-default btn-pay btn-block"
+							onclick="requestWebPay()" id="btnPaymentTransbank">
+							Pagar</button>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+		<!-- De donde vienen estos parametros -->
+		<form id="form_r" method="post" action="">
+			<input type="hidden" name="respuestaCredito" id="respuestaCredito"
+				value=""> <input type="hidden" name="IDCLI" id="IDCLI"
+				value="" th:attr="value=${IDCLI}"> <input type="hidden"
+				name="IDTRX" id="IDTRX" value="" th:attr="value=${IDTRX}"> <input
+				type="hidden" name="FECTR" id="FECTR" value=""
+				th:attr="value=${FECTR}">
+		</form>
+		
+		<form id="se-form" method="post" action="/pagos-telsur/">
+			<input type="hidden" name="mensaje" id="mensaje" value=""> 
+		</form>
+
+		<div class="modal fade" id="modalProgress" role="dialog">
+			<p></p>
+			<p></p>
+			<div class="">
+				<h1>Procesando...</h1>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+<!-- boton regresar no se bloquea -->
+<div class="row">
+	<div class="receipt-header receipt-header-mid receipt-footer">
+		<form action="" method="GET" th:attr="action=${btnVolver}">
+			<!--  flag para reinicializar transaccion en caso de retorno -->
+			<!-- <input type="hidden" name="regresar" id="regresar" value="1" /> -->
+			<div class="form-group" style="text-align: center;">
+				<br><br>
+				<button type="submit" class="btn btn-telsur titilliumweb">Regresar</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div id="page-cover">
+	<iframe title="" src="http://www.telsur.cl/embeddable-footer"
+		frameborder="0" scrolling="0" width="100%" height="100%"
+		class="iframeFooter" th:attr="src=${footer}"></iframe>
+	<style>
+.datos-con-margin-top {
+	margin-top: 0px;
+}
+
+@media ( min-width : 1200px) {
+	.iframeFooter {
+		height: 830px;
+	}
+	.confondo {
+		height: 460px;
+	}
+	.datos-con-margin-top {
+		margin-top: 59px;
+	}
+}
+
+@media ( max-width : 1199px) and (min-width: 1024px) {
+	.iframeFooter {
+		height: 910px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 1023px) and (min-width: 992px) {
+	.iframeFooter {
+		height: 800px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 991px) and (min-width: 768px) {
+	.iframeFooter {
+		height: 630px;
+	}
+	.confondo {
+		height: 460px;
+	}
+}
+
+@media ( max-width : 767px) and (min-width: 736px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 735px) and (min-width: 667px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 666px) and (min-width: 600px) {
+	.iframeFooter {
+		height: 670px;
+	}
+}
+
+@media ( max-width : 599px) and (min-width: 568px) {
+	.iframeFooter {
+		height: 600px;
+	}
+}
+
+@media ( max-width : 567px) and (min-width: 414px) {
+	.iframeFooter {
+		height: 1374px;
+	}
+}
+
+@media ( max-width : 413px) and (min-width: 384px) {
+	.iframeFooter {
+		height: 480px;
+	}
+}
+
+@media ( max-width : 383px) and (min-width: 375px) {
+	.iframeFooter {
+		height: 1374px;
+	}
+}
+
+@media ( max-width : 374px) and (min-width: 320px) {
+	.iframeFooter {
+		height: 1430px;
+	}
+}
+
+@media ( max-width : 319px) and (min-width: 240px) {
+	.iframeFooter {
+		height: 1500px;
+	}
+}
+
+@media ( max-width : 240px) {
+	.iframeFooter {
+		height: 1500px;
+	}
+}
+</style>
+</div>
+<script th:src="@{~/pagos-telsur/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{~/pagos-telsur/js/bootstrap.js}"></script>
+<script th:src="@{~/pagos-telsur/js/allware.js}"></script>
+
+</html>

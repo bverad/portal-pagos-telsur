@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Telef&oacute;nica del Sur | Pago de Cuentas</title>
+		<meta name="keywords" content="404 iphone web template, Android web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+		<!--<link href="http://pagos.telsur.cl/css/error_404.css" rel="stylesheet" type="text/css"  media="all" /> -->
+		<link rel="stylesheet" href="http://pagos.telsur.cl/css/allware.css">
+		<link rel="stylesheet" href="http://pagos.telsur.cl/css/style.css">
+		<link rel="stylesheet" href="http://pagos.telsur.cl/css/new-style.css">
+		<link rel="stylesheet" href="http://pagos.telsur.cl/css/bootstrap.css">
+	</head>
+
+	<body>
+	<div id="cboxOverlay" style="display: none;"></div>
+	<div id="page-cover">
+		<iframe title="" width="100%" src="http://www.telsur.cl/embeddable-header" frameborder="0" scrolling="no"></iframe>		<main class="page-404">
+			<div class="container">
+				<div  class="row" >
+					<div class="col-sm-3">
+						<img src="http://pagos.telsur.cl/img/w150.png" />
+					</div>
+					<div class="col-sm-9">
+						<h3>P&aacute;gina no encontrada (404)</h3>
+						<p>La p&aacute;gina que busca no est&aacute; disponible, por favor verifique que la direcci&oacute;n este correctamente ingresada o utilice nuestro buscador.</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<iframe title="" src="http://www.telsur.cl/embeddable-footer" frameborder="0" scrolling="0" width="100%" height="100%" class="iframeFooter"></iframe>
+<style>
+    .datos-con-margin-top{
+        margin-top: 0px;
+    }
+    @media (min-width: 1200px){
+        .iframeFooter{
+            height: 670px;
+        }
+        .confondo{
+            height:460px;
+        }
+        .datos-con-margin-top{
+            margin-top: 59px;
+        }
+    }
+    @media (max-width: 1199px) and (min-width: 1024px){
+        .iframeFooter{
+            height: 680px;
+        }
+        .confondo{
+            height:460px;
+        }
+    }
+    @media (max-width: 1023px) and (min-width: 992px){
+        .iframeFooter{
+            height: 800px;
+        }
+        .confondo{
+            height:460px;
+        }
+    }
+    @media (max-width: 991px) and (min-width: 768px){
+        .iframeFooter{
+            height: 1370px;
+        }
+        .confondo{
+            height:460px;
+        }
+    }
+    @media (max-width: 767px) and (min-width: 736px){
+        .iframeFooter{
+            height: 1374px;
+        }
+    }
+    @media (max-width: 735px) and (min-width: 667px){
+        .iframeFooter{
+            height: 1374px;
+        }
+    }
+    @media (max-width: 666px) and (min-width: 600px){
+        .iframeFooter{
+            height: 1374px;
+        }
+    }
+    @media (max-width: 599px) and (min-width: 568px){
+        .iframeFooter{
+            height: 1374px;
+        }
+    }
+    @media (max-width: 567px) and (min-width: 414px){
+        .iframeFooter{
+            height: 1374px;
+        }
+    }
+    @media (max-width: 413px) and (min-width: 384px){
+        .iframeFooter{
+            height: 1374px;
+        }
+    }
+    @media (max-width: 383px) and (min-width: 375px){
+        .iframeFooter{
+            height: 1374px;
+        }
+    }
+    @media (max-width: 374px) and (min-width: 320px){
+        .iframeFooter{
+            height: 1430px;
+        }
+    }
+    @media (max-width: 319px) and (min-width: 240px){
+        .iframeFooter{
+            height: 1500px;
+        }
+    }
+    @media (max-width: 240px){
+        .iframeFooter{
+            height: 1500px;
+        }
+    }
+</style>	</div>
+
+		<!--<div class="wrap">
+				<div class="header">
+					<div class="logo">
+						<h1><a>Página no encontrada</a></h1>
+					</div>
+				</div>
+			<div class="content">
+				<img src="http://pagos.telsur.cl/img/error-img.png" title="error" />
+				<p><span><label>O</label>hh.....</span>La página no se encuentra disponible</p>
+				<a id="redirect">Volver al Inicio</a>
+   			</div>
+		</div> -->
+	</body>
+</html>
+
+<script src="http://pagos.telsur.cl/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    var BASE_URL = 'http://pagos.telsur.cl/';
+
+    $("a").on('click', function(){
+        console.debug(BASE_URL);
+        window.location.href = BASE_URL;
+	});
+</script>
+
+<style>
+	a { cursor: pointer; }
+</style>
+

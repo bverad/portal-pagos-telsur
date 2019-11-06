@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="icon" type="image/png" href="https://www.telsur.cl/media/telefonicadelsur/favicon-telefonicadelsur.png">
+	
+	<script th:src="@{~/pagos-telsur/js/jquery-3.2.1.min.js}"></script>
+	<title>Pago</title>
+</head>
+<script type="text/javascript"> 
+	function cerrarse() { 
+		var url = $('#url').val(); 
+		if(window.opener){ 
+			var response = $('#response').val(); 
+			window.opener.recargaVocher(url, response); 
+		}else{ 
+			document.getElementById("recarga").action = url; 
+			document.getElementById('recarga').submit() 
+		} 
+	}
+</script>
+<body onload="cerrarse()"> 
+	<form id="recarga" method="post" action="">
+		<span style="text-align: center;"><img th:src="@{~/img/preloader.gif}" style="height:65px;width:65px;"></img></span>
+		<input type="hidden" id="url" value="" 
+			th:attr="value=${urlRespuestaCredito ?: '/respuesta'}">
+		<input type="hidden" id="response" name="respuestaCredito" value=""
+			th:attr="value = ${respuestaCredito}">
+	</form>
+</body>
+</html>

@@ -1,0 +1,588 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<script type="text/javascript">
+		var BASE_URL = 'http://pagos.telsur.cl/';
+	</script>
+	<title>Telef&oacute;nica del Sur | Pago de Cuentas</title>
+	
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+	<link rel="stylesheet" th:href="@{~/pagos-telsur/css/allware.documents.css}"/>
+	<link rel="stylesheet" th:href="@{~/pagos-telsur/css/bootstrap.css}"/>
+	<link rel="icon" type="image/png" href="https://www.telsur.cl/media/telefonicadelsur/favicon-telefonicadelsur.png">
+	
+	
+
+</head>
+
+<body lang=ES-CL link=blue vlink=purple style='tab-interval: 35.4pt'>
+	<iframe title="" width="100%"
+			src="http://www.telsur.cl/embeddable-header" frameborder="0"
+			scrolling="no" th:attr="src=${header}"></iframe>
+
+	<div class="container" id="container">
+		<table class="MsoNormalTable" border=0 cellspacing=0 cellpadding=0
+			width="100%"
+			style='width: 100.0%; mso-cellspacing: 0cm; background: #F5F8FA; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 0cm 0cm 0cm'>
+			<tr	style='mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes'>
+				<td style='padding: 0cm 0cm 0cm 0cm'>
+					<div align=center>
+						<table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0"
+							width="100%"
+							style='width: 100.0%; mso-cellspacing: 0cm; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 0cm 0cm 0cm'>
+							<tr style='mso-yfti-irow: 0; mso-yfti-firstrow: yes'>
+								<td style='padding: 18.75pt 0cm 18.75pt 0cm'>
+									<p class="MsoNormal" align="center" style='text-align: center;'>
+										<span style='font-family: "Helvetica", sans-serif'>
+											<a href="http://app.telsur.cl" target="_blank">
+												<b>
+													<span
+														style='font-size: 14.5pt; color: green; text-decoration: none; text-underline: none'>
+														<img id="voucher-img"
+																name="voucher-img"
+																border="0"
+																th:src="@{~/pagos-telsur/img/bg-pago-cuentas-login_2.png}"/> 
+																
+													</span>
+												</b>
+											</a>
+														<!--  -->
+										</span>
+									</p>
+								</td>
+							</tr>
+							<tr style='mso-yfti-irow: 1'>
+								<td width="100%"
+									style='width: 100.0%; border-top: solid #EDEFF2 1.0pt; border-left: none; border-bottom: solid #EDEFF2 1.0pt; border-right: none; background: white; padding: 0cm 0cm 0cm 0cm; box-sizing: border-box'>
+									<div align=center>
+										<table class="MsoNormalTable" border=0 cellspacing=0
+											cellpadding=0 width=570
+											style='width: 427.5pt; mso-cellspacing: 0cm; background: white; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 0cm 0cm 0cm; box-sizing: border-box'>
+											<tr
+												style='mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes'>
+												<td>
+													<p style='margin-top: 0cm; line-height: 18.0pt; box-sizing: border-box'>
+														<span style='font-size: 12.0pt; font-family: "Helvetica", sans-serif; color: #74787E'>Estimado
+															Cliente
+														</span>
+													</p>
+													<p style='margin-top: 0cm; line-height: 18.0pt; box-sizing: border-box'>
+														<span
+															style='font-size: 12.0pt; font-family: "Helvetica", sans-serif; color: #74787E'>Junto
+															con saludarle, tenemos el agrado de informar el pago
+															realizado en nuestro sitio.
+														</span>
+													</p>
+													<table class="MsoNormalTable" border="0" cellspacing="0"
+														cellpadding="0" width="100%"
+														style='width: 100.0%; mso-cellspacing: 0cm; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 0cm 0cm 0cm; box-sizing: border-box'>
+														<tr style='mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes'>
+															<td style='background: #EDEFF2; padding: 7.5pt 7.5pt 7.5pt 7.5pt; box-sizing: border-box; font-size: 30px !important; text-align: center !important'>
+																<table class="MsoNormalTable" border="0" cellspacing="0"
+																	cellpadding="0" width="100%"
+																	style='width: 100.0%; mso-cellspacing: 0cm; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 0cm 0cm 0cm; box-sizing: border-box; font-size: 30px !important; text-align: center !important'>
+																	<tr style='mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes'>
+																		<td style='padding: 0cm 0cm 0cm 0cm; box-sizing: border-box; font-size: 30px !important; text-align: center !important'>
+																			<div>
+																				<p style='margin-top: 0cm; line-height: 18.0pt'>
+																					<span
+																						style='font-size: 12.0pt; font-family: "Helvetica", sans-serif; color: #74787E'>MONTO
+																						PAGO : <strong>
+																									<span th:text="${monto}" style='font-family: "Helvetica", sans-serif'></span>
+																								</strong>
+																					</span>
+																				</p>
+																				<p style='margin: 0cm; margin-bottom: .0001pt; line-height: 18.0pt; box-sizing: border-box'>
+																					<span
+																						style='font-size: 12.0pt; font-family: "Helvetica", sans-serif; color: #74787E'>R.U.T
+																						: <span th:text="${rut}"></span>
+																					</span>
+																				</p>
+																			</div>
+																		</td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+													</table>
+													<div>
+														<p class="MsoNormal">
+															<span style='font-family: "Helvetica", sans-serif; display: none; mso-hide: all'></span>
+														</p>
+														<table class="MsoNormalTable" border="0" cellpadding="0" 															width="100%"
+															style='width: 100.0%; mso-cellspacing: 1.5pt; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 0cm 0cm 0cm; box-sizing: border-box'>
+															<thead>
+																<tr style='mso-yfti-irow: 0; mso-yfti-firstrow: yes'>
+																	<td style='border: none; border-bottom: solid #EDEFF2 1.0pt; padding: .75pt .75pt 6.0pt .75pt'></td>
+																	<td style='border: none; border-bottom: solid #EDEFF2 1.0pt; padding: .75pt .75pt 6.0pt .75pt'></td>
+																</tr>
+															</thead>
+															<tr style='mso-yfti-irow: 1'>
+																<td>
+																	<p class="MsoNormal">
+																		<strong>
+																			<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>Orden
+																				de Compra</span>
+																			</strong>
+																			<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'></span>
+																	</p>
+																</td>
+																<td>
+																	<p class="MsoNormal" align="center">
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>
+																			<span th:text="${numero_orden ?: '-'}"></span>
+																		</span>
+																	</p>
+																</td>
+															</tr>
+															<tr style='mso-yfti-irow: 2'>
+																<td>
+																	<p class="MsoNormal">
+																		<strong>
+																			<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>Id
+																				de Transacci&oacute;n</span>
+																		</strong>
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'></span>
+																	</p>
+																</td>
+																<td>
+																	<p class="MsoNormal" align="center">
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'><span th:text="${id_transaccion ?: '-'}"></span></span>
+																	</p>
+																</td>
+															</tr>
+															<tr style='mso-yfti-irow: 3'>
+																<td>
+																	<p class="MsoNormal">
+																		<strong>
+																			<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>C&oacute;digo
+																				de Autorizaci&oacute;n</span>
+																		</strong>
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'></span>
+																	</p>
+																</td>
+																<td>
+																	<p class="MsoNormal" align="center">
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'><span th:text="${codigo_autorizacion ?: '-'}"></span></span>
+																	</p>
+																</td>
+															</tr>
+															<tr style='mso-yfti-irow: 4'>
+																<td>
+																	<p class="MsoNormal">
+																		<strong>
+																			<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>N&uacute;mero
+																				Final de Tarjeta</span>
+																		</strong>
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'></span>
+																	</p>
+																</td>
+																<td>
+																	<p class="MsoNormal" align="center">
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>
+																			<span th:text="${numero_tarjeta ?: 'XXXX'}"></span>
+																		</span>
+																	</p>
+																</td>
+															</tr>
+															<tr style='mso-yfti-irow: 5'>
+																<td>
+																	<p class="MsoNormal">
+																		<strong>
+																			<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>Tipo
+																				de Pago</span>
+																		</strong>
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'></span>
+																	</p>
+																</td>
+																<td>
+																	<p class="MsoNormal" align="center">
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>
+																			<span th:text="${tipo_pago ?: '-'}"></span>
+																		</span>
+																	</p>
+																</td>
+															</tr>
+															<tr style='mso-yfti-irow: 6'>
+																<td>
+																	<p class="MsoNormal">
+																		<strong>
+																			<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>N&uacute;mero
+																				de Cuotas</span>
+																		</strong>
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'></span>
+																	</p>
+																</td>
+																<td>
+																	<p class="MsoNormal" align="center">
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>
+																			<span th:text="${numero_cuotas ?: '-'}"></span>
+																		</span>
+																	</p>
+																</td>
+															</tr>
+															<tr style='mso-yfti-irow: 7'>
+																<td>
+																	<p class="MsoNormal">
+																		<strong>
+																			<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>Comercio</span>
+																		</strong>
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'></span>
+																	</p>
+																</td>
+																<td>
+																	<p class="MsoNormal" align="center">
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>
+																			<span th:text="${comercio ?: '-'}"></span>
+																		</span>
+																	</p>
+																</td>
+															</tr>
+															<tr style='mso-yfti-irow: 8; mso-yfti-lastrow: yes'>
+																<td>
+																	<p class="MsoNormal">
+																		<strong>
+																			<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>URL
+																				Comercio</span>
+																		</strong>
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'></span>
+																	</p>
+																</td>
+																<td>
+																	<p class="MsoNormal" align="center">
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>
+																			<a href="http://www.telsur.cl" target="_blank">
+																				<span style='color: #3869D4'>
+																					<span th:text="${urlComercio ?: '-'}"></span>
+																				</span>
+																			</a>
+																		</span>
+																	</p>
+																</td>
+															</tr>
+														</table>
+													</div>
+													<table class="MsoNormalTable" border="0" cellspacing="0"
+														cellpadding="0" width="100%"
+														style='width: 100.0%; mso-cellspacing: 0cm; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 0cm 0cm 0cm'>
+														<tr
+															style='mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes'>
+															<td
+																style='background: #EDEFF2; padding: 7.5pt 7.5pt 7.5pt 7.5pt'>
+																<table class="MsoNormalTable" border="0" cellspacing="0"
+																	cellpadding="0" width="100%"
+																	style='width: 100.0%; mso-cellspacing: 0cm; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 0cm 0cm 0cm'>
+																	<tr
+																		style='mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes'>
+																		<td style='padding: 0cm 0cm 0cm 0cm'>
+																			<div>
+																				<p style='margin: 0cm; margin-bottom: .0001pt; line-height: 18.0pt'>
+																					<span style='font-size: 12.0pt; font-family: "Helvetica", sans-serif; color: #74787E'>LISTA
+																						DE DOCUMENTOS PAGADOS
+																					</span>
+																				</p>
+																			</div>
+																		</td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+													</table>
+													<div>
+														<p class="MsoNormal">
+															<span style='font-family: "Helvetica", sans-serif; display: none; mso-hide: all'>&nbsp;</span>
+														</p>
+														
+														
+														
+														
+														<table class="MsoNormalTable" border=0 cellpadding=0
+															width="100%"
+															style='width: 100.0%; mso-cellspacing: 1.5pt; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 0cm 0cm 0cm; box-sizing: border-box'>
+															<thead>
+																<tr style='mso-yfti-irow: 0; mso-yfti-firstrow: yes'>
+																	<td
+																		style='border: none; border-bottom: solid #EDEFF2 1.0pt; padding: .75pt .75pt 6.0pt .75pt'>
+																		<p class="MsoNormal" align=center
+																			style='margin-top: 22.5pt; margin-right: 0cm; margin-bottom: 22.5pt; margin-left: 0cm; text-align: center'>
+																			<b>
+																				<span style='font-family: "Helvetica", sans-serif'>Tipo
+																					documento
+																				</span>
+																			</b>
+																		</p>
+																	</td>
+																	<td
+																		style='border: none; border-bottom: solid #EDEFF2 1.0pt; padding: .75pt .75pt 6.0pt .75pt'>
+																		<p class="MsoNormal" align="center"
+																			style='margin-top: 22.5pt; margin-right: 0cm; margin-bottom: 22.5pt; margin-left: 0cm; text-align: center'>
+																			<b><span style='font-family: "Helvetica", sans-serif'>N&uacute;mero	Documento</span></b>
+																		</p>
+																	</td>
+																	<td
+																		style='border: none; border-bottom: solid #EDEFF2 1.0pt; padding: .75pt .75pt 6.0pt .75pt'>
+																		<p class="MsoNormal" align="center"
+																			style='margin-top: 22.5pt; margin-right: 0cm; margin-bottom: 22.5pt; margin-left: 0cm; text-align: center'>
+																			<b><span style='font-family: "Helvetica", sans-serif'>Emisi&oacute;n</span></b>
+																		</p>
+																	</td>
+																	<td
+																		style='border: none; border-bottom: solid #EDEFF2 1.0pt; padding: .75pt .75pt 6.0pt .75pt'>
+																		<p class="MsoNormal" align="center"
+																			style='margin-top: 22.5pt; margin-right: 0cm; margin-bottom: 22.5pt; margin-left: 0cm; text-align: center'>
+																			<b><span style='font-family: "Helvetica", sans-serif'>Vencimiento</span></b>
+																		</p>
+																	</td>
+																	<td
+																		style='border: none; border-bottom: solid #EDEFF2 1.0pt; padding: .75pt .75pt 6.0pt .75pt'>
+																		<p class="MsoNormal" align="right"
+																			style='margin-top: 22.5pt; margin-right: 0cm; margin-bottom: 22.5pt; margin-left: 0cm; text-align: right'>
+																			<b><span style='font-family: "Helvetica", sans-serif'>Monto</span></b>
+																		</p>
+																	</td>
+																</tr>
+															</thead>
+															
+															
+															<tr th:each="trxBody : ${trxBodyList}" style='mso-yfti-irow: 1; mso-yfti-lastrow: yes'>
+																<td>
+																	<p class="MsoNormal">
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>
+																			<span th:text="${trxBody.tidoc == '01' ? 'Boleta Comp.' : 'Factura Comp.'}"></span>
+																		</span>
+																	</p>
+																</td>
+																<td>
+																	<p class="MsoNormal" align="center">														
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>
+																			<span th:text="${trxBody.id.doc}"></span>
+																		</span>
+																	</p>
+																</td>
+																<td>
+																	<p class="MsoNormal" align="center">
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>
+																			<span th:text="${trxBody.feemi}"></span>
+																		</span>
+																	</p>
+																</td>
+																<td>
+																	<p class="MsoNormal" align="center">
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>
+																			<span th:text="${trxBody.feven}"></span>
+																		</span>
+																	</p>
+																</td>
+																<td>
+																	<p class="MsoNormal" align="right">																		
+																		<span style='font-size: 11.5pt; font-family: "Helvetica", sans-serif; color: #74787E'>
+																			<span>$</span><span th:text="${#numbers.formatDecimal(trxBody.mnt, 0, 'POINT', 0, 'COMMA')}"></span>
+																		</span>
+																	</p>
+																</td>
+															</tr>
+														</table>
+														
+														
+														
+														
+														
+														
+													</div>
+													<table class="MsoNormalTable" border="1" cellspacing="0"
+														cellpadding="0" width="100%"
+														style='width: 100.0%; mso-cellspacing: 0cm; border: none; border-top: solid #EDEFF2 1.0pt; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 0cm 0cm 0cm'>
+														<tr style='mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes'>
+															<td style='border: none; padding: 18.75pt 0cm 0cm 0cm'></td>
+														</tr>
+													</table>
+													<p class="MsoNormal">
+														<span style='mso-fareast-font-family: "Times New Roman"'></span>
+													</p>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</td>
+							</tr>
+							<tr style='mso-yfti-irow: 2; mso-yfti-lastrow: yes'>
+								<td style='padding: 0cm 0cm 0cm 0cm; box-sizing: border-box'>
+									<div align="center">
+										<table class="MsoNormalTable" border="0" cellspacing="0"
+											cellpadding="0" width="570"
+											style='width: 427.5pt; mso-cellspacing: 0cm; mso-yfti-tbllook: 1184; mso-padding-alt: 0cm 0cm 0cm 0cm; box-sizing: border-box'>
+											<tr
+												style='mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes'>
+												<td style='padding: 26.25pt 26.25pt 26.25pt 26.25pt; box-sizing: border-box'></td>
+											</tr>
+										</table>
+									</div>
+								</td>
+							</tr>
+						</table>
+						
+						
+						<table>
+							<tr>
+								<td>
+									
+									<div class="row" style="align:center;" id="botonera">
+										<div class="receipt-header receipt-header-mid receipt-footer">
+											<!--  Implementar el boton volver-->
+											<form action="" method="GET" th:attr="action=${btnVolver}">
+											<!--  lag para reinicializar transaccion en caso de retorno -->
+												<div class="form-group">
+													<button type="submit" class="btn btn-telsur titilliumweb">Regresar</button>
+													<button type="button" id="pdfDownloader" class="btn btn-telsur titilliumweb">Exportar a pdf</button>
+													<button type="button" class="btn btn-telsur titilliumweb" onclick="print()">Imprimir</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+
+<div id="page-cover">
+	<iframe title="" src="http://www.telsur.cl/embeddable-footer"
+			frameborder="0" scrolling="0" width="100%" height="100%"
+			class="iframeFooter" th:attr="src=${footer}"></iframe>
+	<style>
+		.datos-con-margin-top {
+			margin-top: 0px;
+		}
+		
+		@media ( min-width : 1200px) {
+			.iframeFooter {
+				height: 830px;
+			}
+			.confondo {
+				height: 460px;
+			}
+			.datos-con-margin-top {
+				margin-top: 59px;
+			}
+		}
+		
+		@media ( max-width : 1199px) and (min-width: 1024px) {
+			.iframeFooter {
+				height: 910px;
+			}
+			.confondo {
+				height: 460px;
+			}
+		}
+		
+		@media ( max-width : 1023px) and (min-width: 992px) {
+			.iframeFooter {
+				height: 800px;
+			}
+			.confondo {
+				height: 460px;
+			}
+		}
+		
+		@media ( max-width : 991px) and (min-width: 768px) {
+			.iframeFooter {
+				height: 630px;
+			}
+			.confondo {
+				height: 460px;
+			}
+		}
+		
+		@media ( max-width : 767px) and (min-width: 736px) {
+			.iframeFooter {
+				height: 600px;
+			}
+		}
+		
+		@media ( max-width : 735px) and (min-width: 667px) {
+			.iframeFooter {
+				height: 600px;
+			}
+		}
+		
+		@media ( max-width : 666px) and (min-width: 600px) {
+			.iframeFooter {
+				height: 670px;
+			}
+		}
+		
+		@media ( max-width : 599px) and (min-width: 568px) {
+			.iframeFooter {
+				height: 600px;
+			}
+		}
+		
+		@media ( max-width : 567px) and (min-width: 414px) {
+			.iframeFooter {
+				height: 1374px;
+			}
+		}
+		
+		@media ( max-width : 413px) and (min-width: 384px) {
+			.iframeFooter {
+				height: 480px;
+			}
+		}
+		
+		@media ( max-width : 383px) and (min-width: 375px) {
+			.iframeFooter {
+				height: 1374px;
+			}
+		}
+		
+		@media ( max-width : 374px) and (min-width: 320px) {
+			.iframeFooter {
+				height: 1430px;
+			}
+		}
+		
+		@media ( max-width : 319px) and (min-width: 240px) {
+			.iframeFooter {
+				height: 1500px;
+			}
+		}
+		
+		@media ( max-width : 240px) {
+			.iframeFooter {
+				height: 1500px;
+			}
+		}
+		
+		@media print {
+			.iframeHeader { display: none;}
+			#container { display: block; }
+			#page-cover { display: none; }/* ... except the required div */
+			#botonera { display: none; }
+		}
+	</style>
+</div>
+
+<script th:src="@{~/pagos-telsur/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{~/pagos-telsur/js/moment.js}"></script>
+<script th:src="@{~/pagos-telsur/js/bootstrap.js}"></script>
+<script th:src="@{~/pagos-telsur/js/html2canvas.js}"></script>
+<script th:src="@{~/pagos-telsur/js/jspdf.debug.js}"></script>
+<script th:src="@{~/pagos-telsur/js/allware.js}"></script>
+
+
+
+<script>
+	$('div.alert').not('.alert-important').delay(5000).fadeOut(500);
+</script>
+
+
+
+</html>

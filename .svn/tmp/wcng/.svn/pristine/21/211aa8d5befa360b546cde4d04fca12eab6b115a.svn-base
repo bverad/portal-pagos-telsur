@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: dev
+            
+server:
+  servlet:
+    context-path: /pagos-telsur
+  
+app: 
+  dbCore:
+    ddl-auto: update
+    url: jdbc:mysql://sd92.d4.idev.cl:3306/dvt436_core_01?autoReconnect=true&amp;failOverReadOnly=false&amp;maxReconnects=10
+    username: dvt436_ad
+    password: Dvt436-Ad.acc
+    driver-class-name: com.mysql.jdbc.Driver
+    dialect: org.hibernate.dialect.MySQL5Dialect
+  
+  dbProv:
+    ddl-auto: update
+    url: jdbc:mysql://sd92.d4.idev.cl:3306/dvt436_prov_01?autoReconnect=true&amp;failOverReadOnly=false&amp;maxReconnects=10
+    username: dvt436_ad
+    password: Dvt436-Ad.acc
+    driver-class-name: com.mysql.jdbc.Driver
+    dialect: org.hibernate.dialect.MySQL5Dialect
+
+  email: default@email.com

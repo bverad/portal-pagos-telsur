@@ -1,0 +1,86 @@
+10
+
+dir
+4
+svn://clifford.idev.cl/export/home/SVN/desarrollo/TelsurDev/PDR/Portal%20Pagos/pagos-telsur-v1r00/src/main/java/cl/devetel/pagostelsur
+svn://clifford.idev.cl/export/home/SVN/desarrollo/TelsurDev
+
+
+
+2018-06-22T18:32:47.405929Z
+4
+bvera
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+030767bb-3d6b-0510-a39d-cfc497aca6c1
+
+PagosTelsurApplication.java
+file
+37
+
+
+
+2019-10-08T14:49:50.336000Z
+75c00ffb2226227dde99e1ae7ff46f0c
+2019-10-14T12:56:11.896060Z
+37
+bvera
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2147
+
+config
+dir
+
+controllers
+dir
+
+core
+dir
+
+enums
+dir
+
+exceptions
+dir
+
+prov
+dir
+
+responses
+dir
+
+services
+dir
+
